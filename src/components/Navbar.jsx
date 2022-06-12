@@ -8,13 +8,20 @@ function Navbar() {
             <div className="navigation-menu">
                 <ul>
                     <li>
-                        <a href="/" className="notification"><FaBell size={10} /></a>
+                        <Link to="/">
+                            <FaBell size={20} />
+                        </Link>
                     </li>
                     <li>
-                        <a href="/" className="settings">Settings</a>
+                        <Link to="/">
+                            <FaCog size={20} />
+                        </Link>
+                        {/* <a href="/" className="settings"><FaCog size={20} /></a> */}
                     </li>
                     <li>
-                        <a href="/" className="profile">Profile</a>
+                        <Link to="/">
+                            <FaUserCircle size={20} />
+                        </Link>
                     </li>
                 </ul>
             </div>
