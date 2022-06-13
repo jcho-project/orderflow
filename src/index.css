@@ -71,3 +71,29 @@ nav {
   margin: auto;
   align-items: center;
 }
+
+/* order table */
+
+table {
+  width: 100%;
+  border: 1px solid black;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+th span {
+  margin-right: 1rem;
+}
+
+input {
+  -webkit-appearance: none;
+  border: 1px solid gray;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  background: #f0f0f0;
+}
