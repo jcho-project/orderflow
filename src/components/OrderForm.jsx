@@ -1,4 +1,7 @@
+import Button from "./shared/Button"
+
 function OrderForm() {
+
   const rows = [
     { id: 1, name: 'Liz Lemon', age: 36, is_manager: true, start_date: '02-28-1999' },
     { id: 2, name: 'Jack Donaghy', age: 40, is_manager: true, start_date: '03-05-1997' },
@@ -46,7 +49,16 @@ function OrderForm() {
   }
 
   return (
-    <Table rows={rows} columns={columns} />
+    <>
+      <div className="container">
+        <Table rows={rows} columns={columns} />
+      </div>
+      <div className="controls">
+        <Button>Upload</Button>
+        <Button>Export</Button>
+        <Button type="submit" >Save</Button>
+      </div>
+    </>
   )
 }
 

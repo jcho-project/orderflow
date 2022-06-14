@@ -64,9 +64,14 @@ nav {
 
 /* order form */
 
+.title {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
 .container {
-  max-width: 1440px;
-  height: 800px;
+  width: 90%;
   border: 1px solid #c3c3c3;
   margin: auto;
   align-items: center;
@@ -96,4 +101,29 @@ input {
   width: 100%;
   max-width: 100%;
   background: #f0f0f0;
+}
+
+/* button */
+
+.controls {
+  width: 90%;
+  margin: auto;
+}
+
+.btn {
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
 }

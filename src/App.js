@@ -8,12 +8,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={
           <>
-            <div>
-              <Navbar />
-              <div className="container">
-                <OrderForm />
-              </div>
-            </div>
+            <Navbar />
+            <h2 className="title">Sales Order Entry</h2>
+            <OrderForm />
           </>
         }>
         </Route>
