@@ -106,8 +106,8 @@ input {
 /* button */
 
 .controls {
-  width: 90%;
-  margin: auto;
+  display: flex;
+  justify-content: right;
 }
 
 .btn {
