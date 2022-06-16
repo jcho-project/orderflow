@@ -3,21 +3,21 @@ import Button from "./shared/Button"
 function OrderForm() {
 
   const rows = [
-    { id: 1, name: 'Liz Lemon', age: 36, is_manager: true, start_date: '02-28-1999' },
-    { id: 2, name: 'Jack Donaghy', age: 40, is_manager: true, start_date: '03-05-1997' },
-    { id: 3, name: 'Tracy Morgan', age: 39, is_manager: false, start_date: '07-12-2002' },
-    { id: 4, name: 'Jenna Maroney', age: 40, is_manager: false, start_date: '02-28-1999' },
-    { id: 5, name: 'Kenneth Parcell', age: Infinity, is_manager: false, start_date: '01-01-1970' },
-    { id: 6, name: 'Pete Hornberger', age: null, is_manager: true, start_date: '04-01-2000' },
-    { id: 7, name: 'Frank Rossitano', age: 36, is_manager: false, start_date: null },
-    { id: 8, name: null, age: null, is_manager: null, start_date: null },
+    { id: 1, model: 'Liz Lemon', quantity: 36, price: 10.50, line_status: 'Booked' },
+    { id: 2, model: 'Jack Donaghy', quantity: 40, price: true, line_status: 'Awaiting Shippint' },
+    { id: 3, model: 'Tracy Morgan', quantity: 39, price: false, line_status: 'Pending Pre-Billing' },
+    { id: 4, model: 'Jenna Maroney', quantity: 40, price: false, line_status: 'Closed' },
+    { id: 5, model: 'Kenneth Parcell', quantity: Infinity, price: false, line_status: 'Awaiting Shipping' },
+    { id: 6, model: 'Pete Hornberger', quantity: null, price: true, line_status: 'Booked' },
+    { id: 7, model: 'Frank Rossitano', quantity: 36, price: false, line_status: "Entered" },
+    { id: 8, model: null, quantity: 80, price: 80.50, line_status: "Booked" },
   ]
 
   const columns = [
-    { accessor: 'name', label: 'Name' },
-    { accessor: 'age', label: 'Age' },
-    { accessor: 'is_manager', label: 'Manager', format: value => (value ? '✔️' : '✖️') },
-    { accessor: 'start_date', label: 'Start Date' },
+    { accessor: 'model', label: 'Model' },
+    { accessor: 'quantity', label: 'Quantity' },
+    { accessor: 'price', label: 'Price', format: value => (value ? '✔️' : '✖️') },
+    { accessor: 'line_status', label: 'Line Status' },
   ]
 
   const Table = ({ columns, rows }) => {
