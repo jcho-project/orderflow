@@ -1,22 +1,27 @@
 import Button from "./shared/Button"
+import { useContext } from "react"
+import OrderContext from "../context/OrderContext"
 
 function OrderForm() {
 
+  const { order } = useContext(OrderContext)
+
   const rows = [
     { id: 1, model: 'Liz Lemon', quantity: 36, price: 10.50, line_status: 'Booked' },
-    { id: 2, model: 'Jack Donaghy', quantity: 40, price: true, line_status: 'Awaiting Shippint' },
-    { id: 3, model: 'Tracy Morgan', quantity: 39, price: false, line_status: 'Pending Pre-Billing' },
-    { id: 4, model: 'Jenna Maroney', quantity: 40, price: false, line_status: 'Closed' },
-    { id: 5, model: 'Kenneth Parcell', quantity: Infinity, price: false, line_status: 'Awaiting Shipping' },
-    { id: 6, model: 'Pete Hornberger', quantity: null, price: true, line_status: 'Booked' },
-    { id: 7, model: 'Frank Rossitano', quantity: 36, price: false, line_status: "Entered" },
-    { id: 8, model: null, quantity: 80, price: 80.50, line_status: "Booked" },
+    { id: 2, model: 'Jack Donaghy', quantity: 40, price: 115.5, line_status: 'Awaiting Shippint' },
+    { id: 3, model: 'Tracy Morgan', quantity: 39, price: 125.80, line_status: 'Pending Pre-Billing' },
+    { id: 4, model: 'Jenna Maroney', quantity: 40, price: 119.85, line_status: 'Closed' },
+    { id: 5, model: 'Kenneth Parcell', quantity: 18, price: 76.45, line_status: 'Awaiting Shipping' },
+    { id: 6, model: 'Pete Hornberger', quantity: 28, price: 13.57, line_status: 'Booked' },
+    { id: 7, model: 'Frank Rossitano', quantity: 36, price: 67.85, line_status: "Entered" },
+    { id: 8, model: 'Havier Romano', quantity: 80, price: 80.50, line_status: "Booked" },
   ]
 
   const columns = [
     { accessor: 'model', label: 'Model' },
     { accessor: 'quantity', label: 'Quantity' },
-    { accessor: 'price', label: 'Price', format: value => (value ? '✔️' : '✖️') },
+    // { accessor: 'price', label: 'Price', format: value => (value ? '✔️' : '✖️') },
+    { accessor: 'price', label: 'Price'},
     { accessor: 'line_status', label: 'Line Status' },
   ]
 
