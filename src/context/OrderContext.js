@@ -3,7 +3,7 @@ import {createContext, useState, useEffect} from "react"
 const OrderContext = createContext()
 
 export const OrderProvider = ({children}) => {
-    const [order, setOrder] = useState([])
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {fetchOrder()}, [])
 
@@ -12,11 +12,11 @@ export const OrderProvider = ({children}) => {
         const response = await fetch("/orders?_sord=id&_order=desc")
         const data = await response.json()
 
-        setOrder(data)
+        setOrders(data)
     }
 
     return <OrderContext.Provider value={{
-        order
+        orders
     }}>
         {children}
     </OrderContext.Provider>
