@@ -49,6 +49,11 @@ function OrderInput() {
                 <div className="sub-heading">Status</div>
                 <p>Booked</p>
             </div>
+            <div className="order-number">
+                <h3>Order No.</h3>
+                <div className="sub-heading">Sales Order Number</div>
+                <p>10023456</p>
+            </div>
         </div>
     </div>
   )

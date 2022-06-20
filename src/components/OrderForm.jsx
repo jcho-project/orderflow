@@ -7,11 +7,12 @@ function OrderForm() {
   const { orders } = useContext(OrderContext)
 
   const columns = [
-    { accessor: 'model', label: 'Model' },
-    { accessor: 'quantity', label: 'Quantity' },
-    // { accessor: 'price', label: 'Price', format: value => (value ? '✔️' : '✖️') },
-    { accessor: 'price', label: 'Price'},
-    { accessor: 'line_status', label: 'Line Status' },
+    { accessor: "id", label: "id" },
+    { accessor: "model", label: "Model" },
+    { accessor: "quantity", label: "Quantity" },
+    // { accessor: "price", label: "Price", format: value => (value ? "✔️" : "✖️") },
+    { accessor: "price", label: "Price"},
+    { accessor: "line_status", label: "Line Status" },
   ]
 
   // const Table = ({ columns, rows }) => {
