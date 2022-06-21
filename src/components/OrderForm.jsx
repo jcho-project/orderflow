@@ -44,28 +44,42 @@ function OrderForm() {
   // }
 
   const Table = ({ columns, orders }) => {
-    return (
-      <table>
-        <thead>
-          <tr>
-            {columns.map(column => {
-              return <th key={column.accessor}>{column.label}</th>
-            })}
-          </tr>
-        </thead>
-        <tbody>
-            {orders.map(order => {
-              return (
-                <tr key={order.id}>
-                  {columns.map(column => {
-                    return <td key={column.accessor}>{order[column.accessor]}</td>
-                  })}
-                </tr>
-              )
-            })}
-        </tbody>
-      </table>
-    )
+    if (orders.searchStatus === true) {
+      return (
+        <table>
+          <thead>
+            <tr>
+              {columns.map(column => {
+                return <th key={column.accessor}>{column.label}</th>
+              })}
+            </tr>
+          </thead>
+          <tbody>
+              {orders.map(order => {
+                return (
+                  <tr key={order.id}>
+                    {columns.map(column => {
+                      return <td key={column.accessor}>{order[column.accessor]}</td>
+                    })}
+                  </tr>
+                )
+              })}
+          </tbody>
+        </table>
+      )
+    } else {
+      return (
+        <table>
+          <thead>
+            <tr>
+              {columns.map(column => {
+                return <th key={column.accessor}>{column.label}</th>
+              })}
+            </tr>
+          </thead>
+        </table>
+      )
+    }
   }
 
   return (

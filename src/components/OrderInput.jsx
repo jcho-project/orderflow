@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import OrderContext from "../context/OrderContext"
 
 function OrderInput() {
     const [billTo, setBillTo] = useState("")
     const [shipTo, setShipTo] = useState("")
+
+    const {editSearchStatus} = useContext(OrderContext)
 
     const handleBillTo = (e) => {
         setBillTo(e.target.value)
@@ -42,7 +45,7 @@ function OrderInput() {
             <div className="customerPO">
                 <h3>Customer PO</h3>
                 <div className="sub-heading">Purchase Order</div>
-                <input type="text" placeholder="input the customer purchase order" />
+                <input type="text" placeholder="input customer PO" />
             </div>
             <div className="order-status">
                 <h3>Order Status</h3>
@@ -52,7 +55,10 @@ function OrderInput() {
             <div className="order-number">
                 <h3>Order No.</h3>
                 <div className="sub-heading">Sales Order Number</div>
-                <p>10023456</p>
+                <input type="text" />
+                <button onClick={() => editSearchStatus()}>
+                    Search
+                </button>
             </div>
         </div>
     </div>

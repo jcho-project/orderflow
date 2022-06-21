@@ -4,6 +4,10 @@ const OrderContext = createContext()
 
 export const OrderProvider = ({children}) => {
     const [orders, setOrders] = useState([])
+    const [searchStatus, setSearchStatus] = useState({
+        item: {},
+        search: false
+    })
 
     useEffect(() => {fetchOrder()}, [])
 
@@ -15,8 +19,17 @@ export const OrderProvider = ({children}) => {
         setOrders(data)
     }
 
+    // set search status
+    const editSearchStatus = (item) => {
+        setSearchStatus({
+            item,
+            search:true
+        })
+    }
+
     return <OrderContext.Provider value={{
-        orders
+        orders,
+        editSearchStatus
     }}>
         {children}
     </OrderContext.Provider>
