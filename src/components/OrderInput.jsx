@@ -4,6 +4,7 @@ import OrderContext from "../context/OrderContext"
 function OrderInput() {
     const [billTo, setBillTo] = useState("")
     const [shipTo, setShipTo] = useState("")
+    const [searchValue, setSearchValue] =useState("")
 
     const {editSearchStatus} = useContext(OrderContext)
 
@@ -13,6 +14,11 @@ function OrderInput() {
 
     const handleShipTo = (e) => {
         setShipTo(e.target.value)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        editSearchStatus(searchValue)
     }
 
   return (
@@ -53,12 +59,14 @@ function OrderInput() {
                 <p>Booked</p>
             </div>
             <div className="order-number">
-                <h3>Order No.</h3>
-                <div className="sub-heading">Sales Order Number</div>
-                <input type="text" />
-                <button onClick={() => editSearchStatus()}>
-                    Search
-                </button>
+                <form onSubmit={handleSearch}>
+                    <h3>Order No.</h3>
+                    <div className="sub-heading">Sales Order Number</div>
+                    <input type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} />
+                    <button type="submit">
+                        Search
+                    </button>
+                </form>
             </div>
         </div>
     </div>

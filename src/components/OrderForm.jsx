@@ -44,7 +44,7 @@ function OrderForm() {
   // }
 
   const Table = ({ columns, orders }) => {
-    if (orders.searchStatus === true) {
+    if (orders.search === true) {
       return (
         <table>
           <thead>
