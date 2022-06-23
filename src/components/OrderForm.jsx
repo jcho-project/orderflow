@@ -44,7 +44,6 @@ function OrderForm() {
   // }
 
   const Table = ({ columns, orders }) => {
-    if (orders.search === true) {
       return (
         <table>
           <thead>
@@ -67,19 +66,6 @@ function OrderForm() {
           </tbody>
         </table>
       )
-    } else {
-      return (
-        <table>
-          <thead>
-            <tr>
-              {columns.map(column => {
-                return <th key={column.accessor}>{column.label}</th>
-              })}
-            </tr>
-          </thead>
-        </table>
-      )
-    }
   }
 
   return (
