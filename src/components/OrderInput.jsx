@@ -2,23 +2,13 @@ import { useContext, useState } from "react"
 import OrderContext from "../context/OrderContext"
 
 function OrderInput() {
-    const [billTo, setBillTo] = useState("")
-    const [shipTo, setShipTo] = useState("")
     const [searchValue, setSearchValue] =useState("")
 
-    const {editSearchStatus} = useContext(OrderContext)
-
-    const handleBillTo = (e) => {
-        setBillTo(e.target.value)
-    }
-
-    const handleShipTo = (e) => {
-        setShipTo(e.target.value)
-    }
+    const {searchOrder, billTo, shipTo} = useContext(OrderContext)
 
     const handleSearch = (e) => {
         e.preventDefault()
-        editSearchStatus(searchValue)
+        searchOrder(searchValue)
     }
 
   return (
@@ -28,7 +18,7 @@ function OrderInput() {
                 <h3>Customer</h3>
                 <div className="sub-heading">Bill To</div>
                 <form>
-                    <select value={billTo} onChange={handleBillTo}>
+                    <select value={billTo} selected={billTo}>
                         <option value=""></option>
                         <option value="MSH">MSH</option>
                         <option value="Saturn">Saturn</option>
@@ -40,7 +30,7 @@ function OrderInput() {
                 <h3>Delivery</h3>
                 <div className="sub-heading">Ship To</div>
                 <form>
-                    <select value={shipTo} onChange={handleShipTo}>
+                    <select value={shipTo} selected={shipTo}>
                         <option value=""></option>
                         <option value="New York">New York</option>
                         <option value="Boston">Boston</option>
