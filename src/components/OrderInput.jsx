@@ -1,14 +1,23 @@
 import { useContext, useState } from "react"
 import OrderContext from "../context/OrderContext"
+import { FaEdit } from "react-icons/fa"
 
 function OrderInput() {
     const [searchValue, setSearchValue] =useState("")
 
-    const {searchOrder, billTo, shipTo} = useContext(OrderContext)
+    const { searchOrder, billTo, shipTo, customerPo, orderStatus } = useContext(OrderContext)
 
     const handleSearch = (e) => {
         e.preventDefault()
         searchOrder(searchValue)
+    }
+
+    const renderCustomerPo = (item) => {
+        if (item === "") {
+            return <p>No Customer PO</p>
+        } else {
+            return <p>{item}</p>
+        }
     }
 
   return (
@@ -41,12 +50,12 @@ function OrderInput() {
             <div className="customerPO">
                 <h3>Customer PO</h3>
                 <div className="sub-heading">Purchase Order</div>
-                <input type="text" placeholder="input customer PO" />
+                {renderCustomerPo(customerPo)}
             </div>
             <div className="order-status">
                 <h3>Order Status</h3>
                 <div className="sub-heading">Status</div>
-                <p>Booked</p>
+                <p>{orderStatus}</p>
             </div>
             <div className="order-number">
                 <form onSubmit={handleSearch}>

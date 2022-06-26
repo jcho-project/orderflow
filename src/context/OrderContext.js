@@ -6,6 +6,8 @@ export const OrderProvider = ({children}) => {
     const [orders, setOrders] = useState([])
     const [billTo, setBillTo] = useState("")
     const [shipTo, setShipTo] = useState("")
+    const [customerPo, setCustomerPo] = useState("")
+    const [orderStatus, setOrderStatus] = useState("")
 
     // search order
     const searchOrder = async (item) => {
@@ -19,6 +21,8 @@ export const OrderProvider = ({children}) => {
         setOrders(filteredData)
         updateBillTo(filteredData)
         updateShipTo(filteredData)
+        updateCustomerPo(filteredData)
+        updateOrderStatus(filteredData)
     }
     
     // search bill-to for order
@@ -31,12 +35,26 @@ export const OrderProvider = ({children}) => {
         setShipTo(item[0]["ship-to"])
     }
 
+    // search customer po for order
+    const updateCustomerPo = (item) => {
+        setCustomerPo(item[0]["customer_po"])
+    }
+
+    // search order status for order
+    const updateOrderStatus = (item) => {
+        setOrderStatus(item[0]["order_status"])
+    }
+
     return <OrderContext.Provider value={{
         orders,
         billTo,
         shipTo,
+        customerPo,
+        orderStatus,
         updateBillTo,
         updateShipTo,
+        updateCustomerPo,
+        updateOrderStatus,
         searchOrder
     }}>
         {children}
