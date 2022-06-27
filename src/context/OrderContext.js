@@ -13,16 +13,25 @@ export const OrderProvider = ({children}) => {
     const searchOrder = async (item) => {
         const response = await fetch("/orders?_sort=id")
         const data = await response.json()
-
-        const filteredData = data.filter((order) => {            
-            return order.order_number === parseInt(item)
-        })
         
-        setOrders(filteredData)
-        updateBillTo(filteredData)
-        updateShipTo(filteredData)
-        updateCustomerPo(filteredData)
-        updateOrderStatus(filteredData)
+        
+        if (item === "") {
+            setOrders("")
+            updateBillTo("")
+            updateShipTo("")
+            updateCustomerPo("")
+            updateOrderStatus("")
+        } else {            
+            const filteredData = data.filter((order) => {            
+                return order.order_number === parseInt(item)
+            })
+            
+            setOrders(filteredData)
+            updateBillTo(filteredData)
+            updateShipTo(filteredData)
+            updateCustomerPo(filteredData)
+            updateOrderStatus(filteredData)
+        }
     }
     
     // search bill-to for order

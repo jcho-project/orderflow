@@ -9,6 +9,7 @@ function OrderInput() {
 
     const handleSearch = (e) => {
         e.preventDefault()
+        console.log(typeof(searchValue))
         searchOrder(searchValue)
     }
 
@@ -20,12 +21,21 @@ function OrderInput() {
         }
     }
 
+    const renderBillTo = (item) => {
+        if (item === "") {
+            return <p>No Bill To</p>
+        } else {
+            return <p>{item}</p>
+        }
+    }
+
   return (
     <div className="input-container">
         <div className="input-group">
             <div className="customer">
                 <h3>Customer</h3>
                 <div className="sub-heading">Bill To</div>
+                {renderBillTo(billTo)}
                 <form>
                     <select value={billTo} selected={billTo}>
                         <option value=""></option>
