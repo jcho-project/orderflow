@@ -25,7 +25,7 @@ export const OrderProvider = ({children}) => {
             const filteredData = data.filter((order) => {            
                 return order.order_number === parseInt(item)
             })
-            
+
             setOrders(filteredData)
             updateBillTo(filteredData)
             updateShipTo(filteredData)
@@ -38,14 +38,16 @@ export const OrderProvider = ({children}) => {
     const updateBillTo = (item) => {
         setBillTo(item[0]["bill-to"])
     }
-
+    
     // search ship-to for order
     const updateShipTo = (item) => {
         setShipTo(item[0]["ship-to"])
     }
-
+    
     // search customer po for order
     const updateCustomerPo = (item) => {
+        console.log(item[0]["customer_po"])
+        console.log(item[0]["customer_po"])
         setCustomerPo(item[0]["customer_po"])
     }
 

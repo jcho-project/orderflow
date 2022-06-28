@@ -9,7 +9,6 @@ function OrderInput() {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        console.log(typeof(searchValue))
         searchOrder(searchValue)
     }
 

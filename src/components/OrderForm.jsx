@@ -15,6 +15,26 @@ function OrderForm() {
     { accessor: "line_status", label: "Line Status" },
   ]
 
+  const renderTbody = (item) => {
+    if (item === "") {
+      return <tbody></tbody>
+    } else {
+      return (
+        <tbody>
+          {orders.map(order => {
+            return (
+              <tr key={order.id}>
+                {columns.map(column => {
+                  return <td key={column.accessor}>{order[column.accessor]}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      )
+    }
+  }
+
   const Table = ({ columns, orders }) => {
       return (
         <table>
@@ -25,7 +45,8 @@ function OrderForm() {
               })}
             </tr>
           </thead>
-          <tbody>
+          {renderTbody(orders)}
+          {/* <tbody>
               {orders.map(order => {
                 return (
                   <tr key={order.id}>
@@ -35,7 +56,7 @@ function OrderForm() {
                   </tr>
                 )
               })}
-          </tbody>
+          </tbody> */}
         </table>
       )
   }
