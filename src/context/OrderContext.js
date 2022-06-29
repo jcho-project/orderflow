@@ -13,47 +13,52 @@ export const OrderProvider = ({children}) => {
     const searchOrder = async (item) => {
         const response = await fetch("/orders?_sort=id")
         const data = await response.json()
-        
-        
-        if (item === "") {
-            setOrders("")
-            updateBillTo("")
-            updateShipTo("")
-            updateCustomerPo("")
-            updateOrderStatus("")
-        } else {            
-            const filteredData = data.filter((order) => {            
-                return order.order_number === parseInt(item)
-            })
+                          
+        const filteredData = data.filter((order) => {            
+            return order.order_number === parseInt(item)
+        })
 
-            setOrders(filteredData)
-            updateBillTo(filteredData)
-            updateShipTo(filteredData)
-            updateCustomerPo(filteredData)
-            updateOrderStatus(filteredData)
-        }
+        setOrders(filteredData)
+        updateBillTo(filteredData)
+        updateShipTo(filteredData)
+        updateCustomerPo(filteredData)
+        updateOrderStatus(filteredData)
     }
     
     // search bill-to for order
     const updateBillTo = (item) => {
-        setBillTo(item[0]["bill-to"])
+        if (item.toString().length === 0) {
+            setBillTo("")
+        } else {
+            setBillTo(item[0]["bill-to"])
+        }
     }
     
     // search ship-to for order
     const updateShipTo = (item) => {
-        setShipTo(item[0]["ship-to"])
+        if (item.toString().length === 0) {
+            setShipTo("")
+        } else {
+            setShipTo(item[0]["ship-to"])
+        }
     }
     
     // search customer po for order
     const updateCustomerPo = (item) => {
-        console.log(item[0]["customer_po"])
-        console.log(item[0]["customer_po"])
-        setCustomerPo(item[0]["customer_po"])
+        if (item.length === 0) {
+            setCustomerPo("")
+        } else {
+            setCustomerPo(item[0]["customer_po"])
+        }
     }
 
     // search order status for order
     const updateOrderStatus = (item) => {
-        setOrderStatus(item[0]["order_status"])
+        if (item.toString().length === 0) {
+            setOrderStatus("")
+        } else {
+            setOrderStatus(item[0]["order_status"])
+        }
     }
 
     return <OrderContext.Provider value={{

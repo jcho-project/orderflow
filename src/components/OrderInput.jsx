@@ -12,17 +12,33 @@ function OrderInput() {
         searchOrder(searchValue)
     }
 
+    const renderBillTo = (item) => {
+        if (item.length === 0) {
+            return <p>No Bill To</p>
+        } else {
+            return <p>{item}</p>
+        }
+    }
+
+    const renderShipTo = (item) => {
+        if (item.length === 0) {
+            return <p>No Ship To</p>
+        } else {
+            return <p>{item}</p>
+        }
+    }
+
     const renderCustomerPo = (item) => {
-        if (item === "") {
+        if (item.toString().length === 0) {
             return <p>No Customer PO</p>
         } else {
             return <p>{item}</p>
         }
     }
 
-    const renderBillTo = (item) => {
-        if (item === "") {
-            return <p>No Bill To</p>
+    const renderOrderStatus = (item) => {
+        if (item.length === 0) {
+            return <p>No Order Status</p>
         } else {
             return <p>{item}</p>
         }
@@ -35,26 +51,27 @@ function OrderInput() {
                 <h3>Customer</h3>
                 <div className="sub-heading">Bill To</div>
                 {renderBillTo(billTo)}
-                <form>
+                {/* <form>
                     <select value={billTo} selected={billTo}>
                         <option value=""></option>
                         <option value="MSH">MSH</option>
                         <option value="Saturn">Saturn</option>
                         <option value="Otto">OTTO</option>
                     </select>
-                </form>
+                </form> */}
             </div>
             <div className="delivery">
                 <h3>Delivery</h3>
                 <div className="sub-heading">Ship To</div>
-                <form>
+                {renderShipTo(shipTo)}
+                {/* <form>
                     <select value={shipTo} selected={shipTo}>
                         <option value=""></option>
                         <option value="New York">New York</option>
                         <option value="Boston">Boston</option>
                         <option value="LA">LA</option>
                     </select>
-                </form>
+                </form> */}
             </div>
             <div className="customerPO">
                 <h3>Customer PO</h3>
@@ -64,7 +81,7 @@ function OrderInput() {
             <div className="order-status">
                 <h3>Order Status</h3>
                 <div className="sub-heading">Status</div>
-                <p>{orderStatus}</p>
+                {renderOrderStatus(orderStatus)}
             </div>
             <div className="order-number">
                 <form onSubmit={handleSearch}>
