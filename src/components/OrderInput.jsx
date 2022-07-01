@@ -51,6 +51,7 @@ function OrderInput() {
                 <h3>Customer</h3>
                 <div className="sub-heading">Bill To</div>
                 {renderBillTo(billTo)}
+                <FaEdit />
                 {/* <form>
                     <select value={billTo} selected={billTo}>
                         <option value=""></option>

@@ -1,4 +1,4 @@
-import Button from "./shared/Button"
+import Button from "react-bootstrap/Button"
 import { useContext } from "react"
 import OrderContext from "../context/OrderContext"
 
