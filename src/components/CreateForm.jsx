@@ -1,6 +1,5 @@
 import { useState } from "react"
-import Button from "react-bootstrap/Button"
-import Modal from "react-bootstrap/Modal"
+import Button from "./shared/Button"
 
 function CreateForm() {
   const [show, setShow] = useState(false)
@@ -20,7 +19,21 @@ function CreateForm() {
         New Order
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <div className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title">Modal Title</h4>
+          </div>
+          <div className="modal-body">
+            This is modal content
+          </div>
+          <div className="modal-footer">
+            <Button>Close</Button>
+          </div>
+        </div>
+      </div>
+
+      {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create New Order</Modal.Title>
         </Modal.Header>
@@ -33,7 +46,7 @@ function CreateForm() {
           </Button>
           <Button>Create</Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   )
 }
