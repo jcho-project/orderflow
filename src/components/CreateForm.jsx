@@ -1,19 +1,23 @@
-import { useState } from "react"
+import { useContext } from "react"
 import Button from "./shared/Button"
+import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
 
-  const handleClose = () => {
-    console.log("handleClose has been hit")
-    setShow(false)
-  }
-  const handleShow = () => {
-    console.log("handleShow has been hit")
-    setShow(true)
-  }
+  const { show, handleShow, handleClose } = useContext(OrderContext)
+
+  // const handleClose = () => {
+  //   console.log("handleClose has been hit")
+  //   setShow(false)
+  // }
+  // const handleShow = () => {
+  //   console.log("handleShow has been hit")
+  //   setShow(true)
+  // }
 
   const Modal = (showState) => {
+    console.log(showState)
     if (showState) {
       return (
         <div className="modal">
@@ -25,22 +29,19 @@ function CreateForm() {
               This is modal content
             </div>
             <div className="modal-footer">
-              <Button onClick={handleClose} >Close</Button>
+              <Button onClick={handleClose}>Close</Button>
             </div>
           </div>
         </div>
       )
     } else {
-      return (
-        <Button onClick={handleShow}>
-          New Order
-        </Button>
-      )
+      console.log("state false")
     }
   }
 
   return (
     <>
+      <Button onClick={handleShow}>New Order</Button>
       {Modal(show)}
     </>
   )
