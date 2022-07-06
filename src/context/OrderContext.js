@@ -62,6 +62,12 @@ export const OrderProvider = ({children}) => {
         }
     }
 
+    // modal toggle to show / hide
+    const handleToggleModal = () => {
+        console.log("handleToggleModal has been hit")
+        setShow(!show)
+    }
+
     // modal handleShow
     const handleShow = () => {
         console.log("handleShow has been hit")
@@ -87,7 +93,8 @@ export const OrderProvider = ({children}) => {
         searchOrder,
         show,
         handleShow,
-        handleClose
+        handleClose,
+        handleToggleModal
     }}>
         {children}
     </OrderContext.Provider>
