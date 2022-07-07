@@ -8,7 +8,7 @@ export const OrderProvider = ({children}) => {
     const [shipTo, setShipTo] = useState("")
     const [customerPo, setCustomerPo] = useState("")
     const [orderStatus, setOrderStatus] = useState("")
-    const [show, setShow] = useState(false)
+    const [modalShow, setModalShow] = useState(false)
 
     // search order
     const searchOrder = async (item) => {
@@ -65,19 +65,19 @@ export const OrderProvider = ({children}) => {
     // modal toggle to show / hide
     const handleToggleModal = () => {
         console.log("handleToggleModal has been hit")
-        setShow(!show)
+        setModalShow(!modalShow)
     }
 
     // modal handleShow
     const handleShow = () => {
         console.log("handleShow has been hit")
-        setShow(true)
+        setModalShow(true)
     }
     
     // modal handleClose
     const handleClose = () => {
         console.log("handleClose has been hit")
-        setShow(false)
+        setModalShow(false)
       }
 
     return <OrderContext.Provider value={{
@@ -91,7 +91,7 @@ export const OrderProvider = ({children}) => {
         updateCustomerPo,
         updateOrderStatus,
         searchOrder,
-        show,
+        modalShow,
         handleShow,
         handleClose,
         handleToggleModal
