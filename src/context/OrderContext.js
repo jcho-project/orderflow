@@ -68,18 +68,6 @@ export const OrderProvider = ({children}) => {
         setModalShow(!modalShow)
     }
 
-    // modal handleShow
-    const handleShow = () => {
-        console.log("handleShow has been hit")
-        setModalShow(true)
-    }
-    
-    // modal handleClose
-    const handleClose = () => {
-        console.log("handleClose has been hit")
-        setModalShow(false)
-      }
-
     return <OrderContext.Provider value={{
         orders,
         billTo,
@@ -92,8 +80,6 @@ export const OrderProvider = ({children}) => {
         updateOrderStatus,
         searchOrder,
         modalShow,
-        handleShow,
-        handleClose,
         handleToggleModal
     }}>
         {children}

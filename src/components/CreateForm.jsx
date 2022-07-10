@@ -3,13 +3,14 @@ import Button from "./shared/Button"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
-  const { showModal, handleToggleModal } = useContext(OrderContext)
+  const { modalShow, handleToggleModal } = useContext(OrderContext)
 
   const Modal = props => {
     const { show, close } = props
 
     console.log(show)
     console.log(close)
+    console.log(typeof(close))
 
     if (!show) {
       return null
@@ -34,8 +35,8 @@ function CreateForm() {
 
   return (
     <>
-      <Button onClick={handleToggleModal}>New Order</Button>
-      <Modal show={showModal} close={handleToggleModal} />
+      <Button onClick={() => handleToggleModal()}>New Order</Button>
+      <Modal show={modalShow} close={() => handleToggleModal()} />
     </>
   )
 }
