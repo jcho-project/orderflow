@@ -1,13 +1,18 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import Button from "./shared/Button"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
   const { modalShow, handleToggleModal } = useContext(OrderContext)
 
-  const Modal = props => {
-    const { show, close } = props
+  const [testShow, setTestShow] = useState(false)
 
+  const testToggle = () => {
+    console.log("testToggle hit!")
+    setTestShow(!testShow)
+  }
+
+  const Modal = ({ show, close }) => {
     console.log(show)
     console.log(close)
     console.log(typeof(close))
@@ -26,7 +31,7 @@ function CreateForm() {
             This is modal content
           </div>
           <div className="modal-footer">
-            <Button onClick={close}>Close</Button>
+            <button onClick={close}>Close</button>
           </div>
         </div>
       </div>
@@ -35,8 +40,8 @@ function CreateForm() {
 
   return (
     <>
-      <Button onClick={() => handleToggleModal()}>New Order</Button>
-      <Modal show={modalShow} close={() => handleToggleModal()} />
+      <button type="submit" onClick={handleToggleModal}>New Order</button>
+      <Modal show={modalShow} close={handleToggleModal} />
     </>
   )
 }
