@@ -1,22 +1,10 @@
-import { useContext, useState } from "react"
-import Button from "./shared/Button"
+import { useContext } from "react"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
-  const { modalShow, handleToggleModal } = useContext(OrderContext)
-
-  const [testShow, setTestShow] = useState(false)
-
-  const testToggle = () => {
-    console.log("testToggle hit!")
-    setTestShow(!testShow)
-  }
+  const { modalShow, handleToggleModal, billTo, updateBillTo } = useContext(OrderContext)
 
   const Modal = ({ show, close }) => {
-    console.log(show)
-    console.log(close)
-    console.log(typeof(close))
-
     if (!show) {
       return null
     }
@@ -28,7 +16,14 @@ function CreateForm() {
             <h4 className="modal-title">Modal Title</h4>
           </div>
           <div className="modal-body">
-            This is modal content
+            <form>
+                <select value={billTo} onChange={updateBillTo} selected={billTo}>
+                    <option value=""></option>
+                    <option value="MSH">MSH</option>
+                    <option value="Saturn">Saturn</option>
+                    <option value="Otto">OTTO</option>
+                </select>
+            </form>
           </div>
           <div className="modal-footer">
             <button onClick={close}>Close</button>
@@ -40,7 +35,7 @@ function CreateForm() {
 
   return (
     <>
-      <button type="submit" onClick={handleToggleModal}>New Order</button>
+      <button onClick={handleToggleModal}>New Order</button>
       <Modal show={modalShow} close={handleToggleModal} />
     </>
   )
