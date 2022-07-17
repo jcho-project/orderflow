@@ -2,7 +2,7 @@ import { useContext } from "react"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
-  const { modalShow, handleToggleModal, billTo, updateBillTo } = useContext(OrderContext)
+  const { modalShow, handleToggleModal, billTo, shipTo, updateBillTo, updateShipTo } = useContext(OrderContext)
 
   const Modal = ({ show, close }) => {
     if (!show) {
@@ -23,6 +23,14 @@ function CreateForm() {
                     <option value="Saturn">Saturn</option>
                     <option value="Otto">OTTO</option>
                 </select>
+            </form>
+            <form>
+              <select value={shipTo} onChange={updateShipTo} selected={shipTo}>
+                  <option value=""></option>
+                  <option value="New York">New York</option>
+                  <option value="Boston">Boston</option>
+                  <option value="LA">LA</option>
+              </select>
             </form>
           </div>
           <div className="modal-footer">
