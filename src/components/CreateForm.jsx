@@ -17,7 +17,7 @@ function CreateForm() {
           </div>
           <div className="modal-body">
             <form>
-                <select value={billTo} onChange={updateBillTo} selected={billTo}>
+                <select value={billTo} onChange={e => updateBillTo(e.target.value)} selected={billTo}>
                     <option value=""></option>
                     <option value="MSH">MSH</option>
                     <option value="Saturn">Saturn</option>
