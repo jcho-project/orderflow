@@ -52,27 +52,11 @@ function OrderInput() {
                 <div className="sub-heading">Bill To</div>
                 {renderBillTo(billTo)}
                 <FaEdit />
-                {/* <form>
-                    <select value={billTo} selected={billTo}>
-                        <option value=""></option>
-                        <option value="MSH">MSH</option>
-                        <option value="Saturn">Saturn</option>
-                        <option value="Otto">OTTO</option>
-                    </select>
-                </form> */}
             </div>
             <div className="delivery">
                 <h3>Delivery</h3>
                 <div className="sub-heading">Ship To</div>
                 {renderShipTo(shipTo)}
-                {/* <form>
-                    <select value={shipTo} selected={shipTo}>
-                        <option value=""></option>
-                        <option value="New York">New York</option>
-                        <option value="Boston">Boston</option>
-                        <option value="LA">LA</option>
-                    </select>
-                </form> */}
             </div>
             <div className="customerPO">
                 <h3>Customer PO</h3>
