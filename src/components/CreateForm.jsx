@@ -39,11 +39,15 @@ function CreateForm() {
             {/* customer po input */}
             <h4>Customer PO</h4>
             <input type="text" />
-            <button type="submit"></button>
             {/* model input */}
+            <h4>Model</h4>
+            <input type="text" />
             {/* quantity input */}
+            <h4>Quantity</h4>
+            <input type="text" />
           </div>
           <div className="modal-footer">
+            <button type="submit">Submit</button>
             <button onClick={close}>Close</button>
           </div>
         </div>
