@@ -31,8 +31,6 @@ export const OrderProvider = ({children}) => {
         if (item.toString().length === 0) {
             setBillTo("")
         } else {
-            console.log(item)
-            console.log(typeof(item))
             setBillTo(item[0]["bill-to"])
         }
     }

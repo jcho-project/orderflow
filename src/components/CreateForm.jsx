@@ -1,8 +1,19 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
   const { modalShow, handleToggleModal } = useContext(OrderContext)
+
+  const initialValues = {
+    "bill-to": "",
+    "ship-to": "",
+    "model": "",
+    "quantity": 0,
+    "price": 0,
+    "customer_po": 0,
+  }
+
+  const [values, setValues] = useState(initialValues)
 
   const Modal = ({ show, close }) => {
     if (!show) {
