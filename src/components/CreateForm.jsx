@@ -15,6 +15,18 @@ function CreateForm() {
 
   const [values, setValues] = useState(initialValues)
 
+  const handleInputChange = (e) => {
+    // const name = e.target.name
+    // const value = e.target.value
+
+    const { name, value } = e.target
+
+    setValues({
+      ...values,
+      [name]: value,
+    })
+  }
+
   const Modal = ({ show, close }) => {
     if (!show) {
       return null
@@ -49,7 +61,7 @@ function CreateForm() {
             </form>
             {/* customer po input */}
             <h4>Customer PO</h4>
-            <input type="text" />
+            <input type="text" onChange={handleInputChange} name="customer_po" label="customer_po" />
             {/* model input */}
             <h4>Model</h4>
             <input type="text" />
