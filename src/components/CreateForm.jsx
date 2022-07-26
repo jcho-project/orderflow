@@ -19,12 +19,15 @@ function CreateForm() {
     // const name = e.target.name
     // const value = e.target.value
 
+    
     const { name, value } = e.target
-
+    
     setValues({
       ...values,
       [name]: value,
     })
+
+    console.log(values)
   }
 
   const Modal = ({ show, close }) => {
@@ -61,7 +64,7 @@ function CreateForm() {
             </form>
             {/* customer po input */}
             <h4>Customer PO</h4>
-            <input type="text" onChange={handleInputChange} name="customer_po" label="customer_po" />
+            <input type="text" value={values.customer_po} onChange={handleInputChange} name="customer_po" />
             {/* model input */}
             <h4>Model</h4>
             <input type="text" />
