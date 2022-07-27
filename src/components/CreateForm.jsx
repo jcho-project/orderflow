@@ -19,15 +19,16 @@ function CreateForm() {
     // const name = e.target.name
     // const value = e.target.value
 
-    
     const { name, value } = e.target
     
     setValues({
       ...values,
       [name]: value,
     })
+  }
 
-    console.log(values)
+  const handleFormSubmit = (e) => {
+    console.log(e.target)
   }
 
   const Modal = ({ show, close }) => {
@@ -42,39 +43,39 @@ function CreateForm() {
             <h4 className="modal-title">Modal Title</h4>
           </div>
           <div className="modal-body">
-            {/* bill-to selector */}
-            <h4>Bill-To</h4>
             <form>
-                <select>
-                    <option value=""></option>
-                    <option value="MSH">MSH</option>
-                    <option value="Saturn">Saturn</option>
-                    <option value="Otto">OTTO</option>
-                </select>
-            </form>
-            {/* ship-to selector */}
-            <h4>Ship-To</h4>
-            <form>
-              <select>
+              {/* bill-to selector */}
+              <h4>Bill-To</h4>
+                <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange}>
                   <option value=""></option>
-                  <option value="New York">New York</option>
-                  <option value="Boston">Boston</option>
-                  <option value="LA">LA</option>
+                  <option value="MSH">MSH</option>
+                  <option value="Saturn">Saturn</option>
+                  <option value="Otto">OTTO</option>
+                </select>
+              {/* ship-to selector */}
+              <h4>Ship-To</h4>
+              <select name="ship-to" value={values["ship-to"]} onChange={handleInputChange}>
+                <option value=""></option>
+                <option value="New York">New York</option>
+                <option value="Boston">Boston</option>
+                <option value="LA">LA</option>
               </select>
+              {/* customer po input */}
+              <h4>Customer PO</h4>
+              <input type="text" name="customer_po" onSubmit={handleInputChange} />
+              {/* model input */}
+              <h4>Model</h4>
+              <input type="text" name="model" onSubmit={handleInputChange} />
+              {/* quantity input */}
+              <h4>Quantity</h4>
+              <input type="text" name="quantity" onSubmit={handleInputChange} />
+              <h4>Price</h4>
+              <input type="text" name="price" onSubmit={handleInputChange} />
+              <div className="modal-footer">
+                <button type="submit" onClick={handleFormSubmit} >Submit</button>
+                <button onClick={close}>Close</button>
+              </div>
             </form>
-            {/* customer po input */}
-            <h4>Customer PO</h4>
-            <input type="text" value={values.customer_po} onChange={handleInputChange} name="customer_po" />
-            {/* model input */}
-            <h4>Model</h4>
-            <input type="text" />
-            {/* quantity input */}
-            <h4>Quantity</h4>
-            <input type="text" />
-          </div>
-          <div className="modal-footer">
-            <button type="submit">Submit</button>
-            <button onClick={close}>Close</button>
           </div>
         </div>
       </div>
