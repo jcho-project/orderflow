@@ -16,6 +16,7 @@ function CreateForm() {
   const [values, setValues] = useState(initialValues)
 
   const handleInputChange = (e) => {
+    e.preventDefault()
     // const name = e.target.name
     // const value = e.target.value
 
@@ -27,8 +28,8 @@ function CreateForm() {
     })
   }
 
-  const handleFormSubmit = (e) => {
-    console.log(e.target)
+  const createNewOrder = (newValues) => {
+    console.log(newValues)
   }
 
   const Modal = ({ show, close }) => {
@@ -46,7 +47,7 @@ function CreateForm() {
             <form>
               {/* bill-to selector */}
               <h4>Bill-To</h4>
-                <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange}>
+                <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
                   <option value=""></option>
                   <option value="MSH">MSH</option>
                   <option value="Saturn">Saturn</option>
@@ -54,7 +55,7 @@ function CreateForm() {
                 </select>
               {/* ship-to selector */}
               <h4>Ship-To</h4>
-              <select name="ship-to" value={values["ship-to"]} onChange={handleInputChange}>
+              <select name="ship-to" value={values["ship-to"]} onChange={handleInputChange} >
                 <option value=""></option>
                 <option value="New York">New York</option>
                 <option value="Boston">Boston</option>
@@ -62,17 +63,17 @@ function CreateForm() {
               </select>
               {/* customer po input */}
               <h4>Customer PO</h4>
-              <input type="text" name="customer_po" onSubmit={handleInputChange} />
+              <input type="text" name="customer_po" value={values.customer_po} onChange={handleInputChange} />
               {/* model input */}
               <h4>Model</h4>
-              <input type="text" name="model" onSubmit={handleInputChange} />
+              <input type="text" name="model" onChange={handleInputChange} />
               {/* quantity input */}
               <h4>Quantity</h4>
-              <input type="text" name="quantity" onSubmit={handleInputChange} />
+              <input type="text" name="quantity" onChange={handleInputChange} />
               <h4>Price</h4>
-              <input type="text" name="price" onSubmit={handleInputChange} />
+              <input type="text" name="price" onChange={handleInputChange} />
               <div className="modal-footer">
-                <button type="submit" onClick={handleFormSubmit} >Submit</button>
+                <button type="submit" onClick={createNewOrder} >Submit</button>
                 <button onClick={close}>Close</button>
               </div>
             </form>
