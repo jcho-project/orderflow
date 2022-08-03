@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { Fragment, useContext, useState } from "react"
 import OrderContext from "../context/OrderContext"
 
 function CreateForm() {
@@ -32,6 +32,12 @@ function CreateForm() {
     console.log(newValues)
   }
 
+  const customerPoInput = () => {
+    return (
+        <input type="text" name="customer_po" value={values["customer_po"]} onChange={handleInputChange} />
+    )
+  }
+
   const Modal = ({ show, close }) => {
     if (!show) {
       return null
@@ -62,8 +68,9 @@ function CreateForm() {
                 <option value="LA">LA</option>
               </select>
               {/* customer po input */}
-              <h4>Customer PO</h4>
-              <input type="text" name="customer_po" value={values.customer_po} onChange={handleInputChange} />
+              {/* <h4>Customer PO</h4>
+              <input type="text" name="customer_po" value={values["customer_po"]} onChange={handleInputChange} /> */}
+              {customerPoInput()}
               {/* model input */}
               <h4>Model</h4>
               <input type="text" name="model" onChange={handleInputChange} />
