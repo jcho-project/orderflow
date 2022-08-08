@@ -28,7 +28,7 @@ function CreateForm() {
     "model": "",
     "quantity": 0,
     "price": 0,
-    "customer_po": 0,
+    "customer_po": "",
   }
 
   const [values, setValues] = useState(initialValues)
@@ -46,11 +46,7 @@ function CreateForm() {
     })
   }
 
-  const createNewOrder = (newValues) => {
-    console.log(newValues)
-  }
-
-  const Modal = ({ show, close }) => {
+  const Modal = ({ show, close, children }) => {
     if (!show) {
       return null
     }
@@ -62,7 +58,9 @@ function CreateForm() {
             <h4 className="modal-title">Modal Title</h4>
           </div>
           <div className="modal-body">
-            <form>
+            {children}
+          </div>
+          {/* <div className="modal-body"> */}
               {/* <h4>Bill-To</h4>
                 <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
                   <option value=""></option>
@@ -87,8 +85,8 @@ function CreateForm() {
                 <button type="submit" onClick={createNewOrder} >Submit</button>
                 <button onClick={close}>Close</button>
               </div> */}
-            </form>
-          </div>
+            <button onClick={close}>Close</button>
+          {/* </div> */}
         </div>
       </div>
     )
@@ -96,20 +94,13 @@ function CreateForm() {
 
   return (
     <>
-      <div className="modal">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h4 className="modal-title">Modal Title</h4>
-          </div>
-          <div className="modal-body">
-            <form>
-              <Modal show={modalShow} close={handleToggleModal} poInput={CustomerPoInput} />
-              <CustomerPoInput po={values} change={handleInputChange} />
-              <ModelInput model={values} change={handleInputChange} />
-            </form>
-          </div>
-        </div>
-      </div>
+      <Modal show={modalShow} close={handleToggleModal}>
+        <h4>test</h4>
+        <form>
+          <CustomerPoInput po={values} change={handleInputChange} />
+          <ModelInput model={values} change={handleInputChange} />
+        </form>
+      </Modal>
       <button onClick={handleToggleModal}>New Order</button>
     </>
   )
