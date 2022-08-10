@@ -58,8 +58,8 @@ function CreateForm() {
             <h4 className="modal-title">Modal Title</h4>
           </div>
           <div className="modal-body">
-            {children}
           </div>
+          {children}
           {/* <div className="modal-body"> */}
               {/* <h4>Bill-To</h4>
                 <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
@@ -95,10 +95,11 @@ function CreateForm() {
   return (
     <>
       <Modal show={modalShow} close={handleToggleModal}>
-        <h4>test</h4>
         <form>
           <CustomerPoInput po={values} change={handleInputChange} />
           <ModelInput model={values} change={handleInputChange} />
+          <h4>test</h4>
+          <input type="text" name="test" id="test" value={values["model"]} onChange={handleInputChange} />
         </form>
       </Modal>
       <button onClick={handleToggleModal}>New Order</button>
