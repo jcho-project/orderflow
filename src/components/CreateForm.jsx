@@ -1,23 +1,23 @@
 import { useContext, useState } from "react"
 import OrderContext from "../context/OrderContext"
 
-const CustomerPoInput = ({ po, change }) => {
-  return (
-    <>
-      <h4>Customer PO</h4>
-      <input type="text" name="customer_po" value={po["customer_po"]} onChange={change} />
-    </>
-  )
-}
+// const CustomerPoInput = ({ po, change }) => {
+//   return (
+//     <>
+//       <h4>Customer PO</h4>
+//       <input type="text" name="customer_po" value={po["customer_po"]} onChange={change} />
+//     </>
+//   )
+// }
 
-const ModelInput = ({ model, change }) => {
-  return (
-    <>
-      <h4>Model</h4>
-      <input type="text" name="model" onChange={change} />
-    </>
-  )
-}
+// const ModelInput = ({ model, change }) => {
+//   return (
+//     <>
+//       <h4>Model</h4>
+//       <input type="text" name="model" onChange={change} />
+//     </>
+//   )
+// }
 
 function CreateForm() {
   const { modalShow, handleToggleModal } = useContext(OrderContext)
@@ -33,6 +33,11 @@ function CreateForm() {
 
   const [values, setValues] = useState(initialValues)
 
+  const testInputChange = (e) => {
+    e.preventDefault()
+    console.log(e.target.value)
+  }
+
   const handleInputChange = (e) => {
     e.preventDefault()
     // const name = e.target.name
@@ -46,7 +51,7 @@ function CreateForm() {
     })
   }
 
-  const Modal = ({ show, close, children }) => {
+  const Modal = ({ show, close }) => {
     if (!show) {
       return null
     }
@@ -58,8 +63,16 @@ function CreateForm() {
             <h4 className="modal-title">Modal Title</h4>
           </div>
           <div className="modal-body">
+            <form onSubmit={testInputChange}>
+              <h4>Customer PO</h4>
+              <input type="text" name="customer_po" />
+              <h4>Model</h4>
+              <input type="text" name="model" />
+              <h4>Qty</h4>
+              <input type="text" name="quantity" />
+            </form>
+            <button type="submit">Submit</button>
           </div>
-          {children}
           {/* <div className="modal-body"> */}
               {/* <h4>Bill-To</h4>
                 <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
@@ -95,12 +108,12 @@ function CreateForm() {
   return (
     <>
       <Modal show={modalShow} close={handleToggleModal}>
-        <form>
+        {/* <form>
           <CustomerPoInput po={values} change={handleInputChange} />
           <ModelInput model={values} change={handleInputChange} />
           <h4>test</h4>
           <input type="text" name="test" id="test" value={values["model"]} onChange={handleInputChange} />
-        </form>
+        </form> */}
       </Modal>
       <button onClick={handleToggleModal}>New Order</button>
     </>
