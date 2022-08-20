@@ -35,7 +35,8 @@ function CreateForm() {
 
   const testInputChange = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
+    console.log(typeof(e.target[0]))
+    console.log(e.target[0].name)
   }
 
   const handleInputChange = (e) => {
@@ -57,24 +58,25 @@ function CreateForm() {
     }
 
     return (
-      <div className="modal">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h4 className="modal-title">Modal Title</h4>
-          </div>
-          <div className="modal-body">
-            <form onSubmit={testInputChange}>
-              <h4>Customer PO</h4>
-              <input type="text" name="customer_po" />
-              <h4>Model</h4>
-              <input type="text" name="model" />
-              <h4>Qty</h4>
-              <input type="text" name="quantity" />
-            </form>
-            <button type="submit">Submit</button>
-          </div>
-          {/* <div className="modal-body"> */}
-              {/* <h4>Bill-To</h4>
+      <form onSubmit={testInputChange}>
+        <h4>Customer PO</h4>
+        <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
+        <h4>Model</h4>
+        <input type="text" value={values["model"]} name="model" onChange={handleInputChange} />
+        <h4>Qty</h4>
+        <input type="text" value={values["quantity"]} name="quantity" onChange={handleInputChange} />
+        <button type="submit">Submit</button>
+        <button onClick={close}>Close</button>
+      </form>
+      // <div className="modal">
+      //   <div className="modal-content">
+      //     <div className="modal-header">
+      //       <h4 className="modal-title">Modal Title</h4>
+      //     </div>
+      //     <div className="modal-body">
+      //     </div>
+          /* <div className="modal-body"> */
+              /* <h4>Bill-To</h4>
                 <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
                   <option value=""></option>
                   <option value="MSH">MSH</option>
@@ -97,24 +99,16 @@ function CreateForm() {
               <div className="modal-footer">
                 <button type="submit" onClick={createNewOrder} >Submit</button>
                 <button onClick={close}>Close</button>
-              </div> */}
-            <button onClick={close}>Close</button>
-          {/* </div> */}
-        </div>
-      </div>
+              </div> */
+          /* </div> */
+      //   </div>
+      // </div>
     )
   }
 
   return (
     <>
-      <Modal show={modalShow} close={handleToggleModal}>
-        {/* <form>
-          <CustomerPoInput po={values} change={handleInputChange} />
-          <ModelInput model={values} change={handleInputChange} />
-          <h4>test</h4>
-          <input type="text" name="test" id="test" value={values["model"]} onChange={handleInputChange} />
-        </form> */}
-      </Modal>
+      <Modal show={modalShow} close={handleToggleModal} />
       <button onClick={handleToggleModal}>New Order</button>
     </>
   )
