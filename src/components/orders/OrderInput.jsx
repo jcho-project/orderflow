@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import OrderContext from "../context/OrderContext"
+import OrderContext from "../../context/OrderContext"
 import { FaEdit } from "react-icons/fa"
 
 function OrderInput() {
