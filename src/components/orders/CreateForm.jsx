@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import OrderContext from "../../context/OrderContext"
 
 function CreateForm() {
-  const { modalShow, handleToggleModal } = useContext(OrderContext)
+  const { addOrder } = useContext(OrderContext)
 
   const initialValues = {
     "bill-to": "",
@@ -15,10 +15,8 @@ function CreateForm() {
 
   const [values, setValues] = useState(initialValues)
 
-  const testInputChange = (e) => {
-    e.preventDefault()
-    console.log(typeof(e.target[0]))
-    console.log(e.target["customer_po"].value)
+  const handleSubmit = (e) => {
+    addOrder(values)
   }
 
   const handleInputChange = (e) => {
@@ -32,8 +30,6 @@ function CreateForm() {
       ...values,
       [name]: value,
     })
-
-    console.log(values)
   }
 
   // const Modal = ({ show, close }) => {
@@ -43,18 +39,30 @@ function CreateForm() {
 
   return (
     <>
-      <form onSubmit={handleInputChange}>
-        <h4>Customer PO</h4>
-        <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
+      <form onSubmit={handleSubmit}>
+        <h4>Bill To</h4>
+        <input type="text" value={values["bill-to"]} name="bill-to" onChange={handleInputChange} />
+
+        <h4>Ship To</h4>
+        <input type="text" value={values["ship-to"]} name="ship-to" onChange={handleInputChange} />
+
         <h4>Model</h4>
         <input type="text" value={values["model"]} name="model" onChange={handleInputChange} />
+
         <h4>Qty</h4>
         <input type="text" value={values["quantity"]} name="quantity" onChange={handleInputChange} />
+
+        <h4>Price</h4>
+        <input type="text" value={values["price"]} name="price" onChange={handleInputChange} />
+
+        <h4>Customer PO</h4>
+        <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
+
         <button type="submit">Submit</button>
         <button>Close</button>
       </form>
       {/* <Modal show={modalShow} close={handleToggleModal} /> */}
-      <button onClick={handleToggleModal}>New Order</button>
+      {/* <button onClick={handleToggleModal}>New Order</button> */}
     </>
   )
 }

@@ -23,7 +23,6 @@ function Navbar() {
 						<Link to="/">
 							<FaCog size={20} />
 						</Link>
-						{/* <a href="/" className="settings"><FaCog size={20} /></a> */}
 					</li>
 					<li>
 						<Link to="/">
