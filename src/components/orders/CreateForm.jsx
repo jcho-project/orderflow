@@ -10,12 +10,21 @@ function CreateForm() {
     "model": "",
     "quantity": 0,
     "price": 0,
+    "order_status": "Booked",
+    "line_status": "Booked",
+    "order_number": 10000000,
     "customer_po": "",
   }
 
   const [values, setValues] = useState(initialValues)
 
   const handleSubmit = (e) => {
+
+    setValues({
+      ...values,
+      [values["order_number"]]: values["order_number"] + 1,
+    })
+
     addOrder(values)
   }
 
@@ -39,6 +48,7 @@ function CreateForm() {
 
   return (
     <>
+      <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={handleSubmit}>
         <h4>Bill To</h4>
         <input type="text" value={values["bill-to"]} name="bill-to" onChange={handleInputChange} />

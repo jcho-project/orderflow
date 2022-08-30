@@ -17,9 +17,11 @@ export const OrderProvider = ({children}) => {
     const response = await fetch("/orders?_sort=id")
     const data = await response.json()
                       
-    const filteredData = data.filter((order) => {            
-      return order.order_number === parseInt(item)
-    })
+    // const filteredData = data.filter((order) => {            
+    //   return order.order_number === parseInt(item)
+    // })
+
+		const filteredData = data
 
     setOrders(filteredData)
     updateBillTo(filteredData)
