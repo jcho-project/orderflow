@@ -8,26 +8,26 @@ export const OrderProvider = ({children}) => {
   const [shipTo, setShipTo] = useState("")
   const [customerPo, setCustomerPo] = useState("")
   const [orderStatus, setOrderStatus] = useState("")
-  const [modalShow, setModalShow] = useState(false)
-
 	const [newOrder, setNewOrder] = useState([])
 
   // search order
   const searchOrder = async (item) => {
     const response = await fetch("/orders?_sort=id")
     const data = await response.json()
-                      
-    // const filteredData = data.filter((order) => {            
-    //   return order.order_number === parseInt(item)
-    // })
 
-		const filteredData = data
+		if (item === "") {
+			setOrders(data)
+		} else {
+			const filteredData = data.filter((order) => {            
+				return order.id === parseInt(item)
+			})
 
-    setOrders(filteredData)
-    updateBillTo(filteredData)
-    updateShipTo(filteredData)
-    updateCustomerPo(filteredData)
-    updateOrderStatus(filteredData)
+			setOrders(filteredData)
+			updateBillTo(filteredData)
+			updateShipTo(filteredData)
+			updateCustomerPo(filteredData)
+			updateOrderStatus(filteredData)
+		}                   
   }
 
   // Add order to db
@@ -83,12 +83,6 @@ export const OrderProvider = ({children}) => {
     }
   }
 
-  // modal toggle to show / hide
-  const handleToggleModal = () => {
-    console.log("handleToggleModal has been hit")
-    setModalShow(!modalShow)
-  }
-
   return <OrderContext.Provider value={{
     orders,
     billTo,
@@ -100,8 +94,6 @@ export const OrderProvider = ({children}) => {
     updateCustomerPo,
     updateOrderStatus,
     searchOrder,
-    modalShow,
-    handleToggleModal,
 		addOrder,
   }}>
     {children}

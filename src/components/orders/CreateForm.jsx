@@ -12,18 +12,12 @@ function CreateForm() {
     "price": 0,
     "order_status": "Booked",
     "line_status": "Booked",
-    "order_number": 10000000,
     "customer_po": "",
   }
 
   const [values, setValues] = useState(initialValues)
 
   const handleSubmit = (e) => {
-
-    setValues({
-      ...values,
-      [values["order_number"]]: values["order_number"] + 1,
-    })
 
     addOrder(values)
   }
@@ -40,11 +34,6 @@ function CreateForm() {
       [name]: value,
     })
   }
-
-  // const Modal = ({ show, close }) => {
-  //   if (!show) {
-  //     return null
-  //   }
 
   return (
     <>
@@ -71,8 +60,6 @@ function CreateForm() {
         <button type="submit">Submit</button>
         <button>Close</button>
       </form>
-      {/* <Modal show={modalShow} close={handleToggleModal} /> */}
-      {/* <button onClick={handleToggleModal}>New Order</button> */}
     </>
   )
 }
