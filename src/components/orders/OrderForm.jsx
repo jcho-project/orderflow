@@ -1,10 +1,13 @@
 import Button from "../shared/Button"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import OrderContext from "../../context/OrderContext"
 
 function OrderForm() {
+  const { orders, searchOrder } = useContext(OrderContext)
 
-  const { orders } = useContext(OrderContext)
+  useEffect(() => {
+    searchOrder("")
+  }, [])
 
   const columns = [
     { accessor: "id", label: "id" },

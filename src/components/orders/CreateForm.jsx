@@ -40,10 +40,20 @@ function CreateForm() {
       <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={handleSubmit}>
         <h4>Bill To</h4>
-        <input type="text" value={values["bill-to"]} name="bill-to" onChange={handleInputChange} />
+        <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
+          <option value=""></option>
+          <option value="MSH">MSH</option>
+          <option value="Saturn">Saturn</option>
+          <option value="OTTO">OTTO</option>
+        </select>
 
         <h4>Ship To</h4>
-        <input type="text" value={values["ship-to"]} name="ship-to" onChange={handleInputChange} />
+        <select name="ship-to" value={values["ship-to"]} onChange={handleInputChange} >
+          <option value=""></option>
+          <option value="New York">New York</option>
+          <option value="Boston">Boston</option>
+          <option value="Los Angeles">Los Angeles</option>
+        </select>
 
         <h4>Model</h4>
         <input type="text" value={values["model"]} name="model" onChange={handleInputChange} />
