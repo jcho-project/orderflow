@@ -1,5 +1,4 @@
 import { createContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 const OrderContext = createContext()
 
@@ -11,8 +10,6 @@ export const OrderProvider = ({children}) => {
   const [orderStatus, setOrderStatus] = useState("")
 	const [newOrder, setNewOrder] = useState([])
   
-  const navigate = useNavigate()
-
   // search order
   const searchOrder = async (item) => {
     const response = await fetch("/orders?_sort=id")
@@ -48,8 +45,6 @@ export const OrderProvider = ({children}) => {
 		data["order_status"] = "Booked"
 		
 		setNewOrder([data, ...orders])
-
-    navigate("/")
 	}
   
   // search bill-to for order

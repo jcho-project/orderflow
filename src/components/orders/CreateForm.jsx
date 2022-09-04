@@ -1,8 +1,11 @@
 import { useContext, useState } from "react"
 import OrderContext from "../../context/OrderContext"
+import { useNavigate } from "react-router-dom"
 
 function CreateForm() {
   const { addOrder } = useContext(OrderContext)
+
+  const navigate = useNavigate()
 
   const initialValues = {
     "bill-to": "",
@@ -18,8 +21,10 @@ function CreateForm() {
   const [values, setValues] = useState(initialValues)
 
   const handleSubmit = (e) => {
+    e.preventDefault()
 
     addOrder(values)
+    navigate("/")
   }
 
   const handleInputChange = (e) => {
