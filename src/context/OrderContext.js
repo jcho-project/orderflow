@@ -9,6 +9,10 @@ export const OrderProvider = ({children}) => {
   const [customerPo, setCustomerPo] = useState("")
   const [orderStatus, setOrderStatus] = useState("")
 	const [newOrder, setNewOrder] = useState([])
+  const [orderEdit, setOrderEdit] = useState({
+    item: {},
+    edit: false
+  })
   
   // search order
   const searchOrder = async (item) => {
@@ -46,6 +50,13 @@ export const OrderProvider = ({children}) => {
 		
 		setNewOrder([data, ...orders])
 	}
+
+  const editOrder = (item) => {
+    setOrderEdit({
+      item,
+      edit: true
+    })
+  }
   
   // search bill-to for order
   const updateBillTo = (item) => {
@@ -95,6 +106,7 @@ export const OrderProvider = ({children}) => {
     updateOrderStatus,
     searchOrder,
 		addOrder,
+    editOrder,
   }}>
     {children}
   </OrderContext.Provider>

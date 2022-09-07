@@ -1,9 +1,10 @@
 import Button from "../shared/Button"
 import { useContext, useEffect } from "react"
 import OrderContext from "../../context/OrderContext"
+import { FaEdit } from "react-icons/fa"
 
 function OrderForm() {
-  const { orders, searchOrder } = useContext(OrderContext)
+  const { orders, searchOrder, editOrder } = useContext(OrderContext)
 
   useEffect(() => {
     searchOrder("")
@@ -33,18 +34,19 @@ function OrderForm() {
                 {columns.map(column => {
                   return <th key={column.accessor}>{column.label}</th>
                 })}
+                <th>Edit</th>
               </tr>
             </thead>
             <tbody>
               {orders.map(order => {
                 return (
                   <tr key={order.id}>
-                    <td>
-                      <input type="checkbox" name="select" />
-                    </td>
                     {columns.map(column => {
                       return <td key={column.accessor}>{order[column.accessor]}</td>
-                    })}
+                      })}
+                      <button>
+                        <td><FaEdit /></td>
+                      </button>
                   </tr>
                 )
               })}
