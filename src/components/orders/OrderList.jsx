@@ -1,7 +1,7 @@
-import Button from "../shared/Button"
 import { useContext, useEffect } from "react"
 import OrderContext from "../../context/OrderContext"
 import { FaEdit } from "react-icons/fa"
+import OrderItem from "./OrderItem"
 
 function OrderForm() {
   const { orders, searchOrder, editOrder } = useContext(OrderContext)
@@ -38,17 +38,20 @@ function OrderForm() {
               </tr>
             </thead>
             <tbody>
-              {orders.map(order => {
+              {/* {orders.map(order => {
                 return (
                   <tr key={order.id}>
                     {columns.map(column => {
                       return <td key={column.accessor}>{order[column.accessor]}</td>
                       })}
-                      <button>
-                        <td><FaEdit /></td>
-                      </button>
+                    <button onClick={() => editOrder()}>
+                      <td><FaEdit /></td>
+                    </button>
                   </tr>
                 )
+              })} */}
+              {orders.map((item) => {
+                <OrderItem item={item} />
               })}
             </tbody>
           </table>
@@ -58,7 +61,25 @@ function OrderForm() {
   }
 
   return (
-    <Table orders={orders} columns={columns} />
+    // <Table orders={orders} columns={columns} />
+    <>
+      <table>
+        <thead>
+          <tr>
+            {columns.map(column => {
+              return <th key={column.accessor}>{column.label}</th>
+            })}
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <OrderItem item={orders} />
+          {/* {orders.map((item) => {
+            <OrderItem item={item} />
+          })} */}
+        </tbody>
+      </table>
+    </>
   )
 }
 

@@ -1,12 +1,11 @@
 import OrderInput from "../components/orders/OrderInput"
-import OrderForm from "../components/orders/OrderForm"
-import CreateForm from "../components/orders/CreateForm"
+import OrderList from "../components/orders/OrderList"
 
 function Home() {
   return (
     <>
       <OrderInput />
-      <OrderForm />
+      <OrderList />
     </>
   )
 }
