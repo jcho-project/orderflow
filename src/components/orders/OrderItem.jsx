@@ -1,4 +1,6 @@
-function OrderItem({item}) {
+import { FaEdit } from "react-icons/fa"
+
+function OrderItem({items}) {
   const columns = [
     { accessor: "id", label: "id" },
     { accessor: "bill-to", label: "Bill-To" },
@@ -12,12 +14,20 @@ function OrderItem({item}) {
   ]
 
   return (
-    <tr key={item.id}>
-      {columns.map(column => {
-        // return <td key={column.accessor}>{item[column.accessor]}</td>
-        return console.log(item[column.accessor])
-      })}
-    </tr>
+    items.map(item => {
+      return (
+        <>
+          <tr key={item.id}>
+            {columns.map(column => {
+              return <td key={column.accessor}>{item[column.accessor]}</td>
+            })}
+          <button>
+          <td><FaEdit /></td>
+          </button>
+          </tr>
+        </>
+      )
+    })
   )
 }
 
