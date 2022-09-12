@@ -1,6 +1,10 @@
+import OrderContext from "../../context/OrderContext"
+import { useContext } from "react"
 import { FaEdit } from "react-icons/fa"
 
 function OrderItem({items}) {
+  const { editOrder } = useContext(OrderContext)
+
   const columns = [
     { accessor: "id", label: "id" },
     { accessor: "bill-to", label: "Bill-To" },
@@ -16,16 +20,16 @@ function OrderItem({items}) {
   return (
     items.map(item => {
       return (
-        <>
-          <tr key={item.id}>
-            {columns.map(column => {
-              return <td key={column.accessor}>{item[column.accessor]}</td>
-            })}
-          <button>
-          <td><FaEdit /></td>
-          </button>
-          </tr>
-        </>
+        <tr key={item.id}>
+          {columns.map(column => {
+            return <td key={column.accessor}>{item[column.accessor]}</td>
+          })}
+          <td>
+            <button>
+              <FaEdit onClick={() => editOrder(item)} />
+            </button>
+          </td>
+        </tr>
       )
     })
   )

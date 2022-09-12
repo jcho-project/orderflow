@@ -22,7 +22,7 @@ function OrderList() {
   ]
 
   return (
-    <>
+    <div className="container">
       <table>
         <thead>
           <tr>
@@ -36,7 +36,7 @@ function OrderList() {
           <OrderItem items={orders} />
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 

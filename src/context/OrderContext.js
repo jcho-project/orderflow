@@ -52,6 +52,7 @@ export const OrderProvider = ({children}) => {
 	}
 
   const editOrder = (item) => {
+    console.log(item.id)
     setOrderEdit({
       item,
       edit: true
