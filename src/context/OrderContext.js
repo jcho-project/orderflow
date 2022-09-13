@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const OrderContext = createContext()
 
@@ -13,6 +14,8 @@ export const OrderProvider = ({children}) => {
     item: {},
     edit: false
   })
+
+  const navigate = useNavigate()
   
   // search order
   const searchOrder = async (item) => {
@@ -52,11 +55,11 @@ export const OrderProvider = ({children}) => {
 	}
 
   const editOrder = (item) => {
-    console.log(item.id)
     setOrderEdit({
       item,
       edit: true
     })
+    navigate("/edit")
   }
   
   // search bill-to for order
@@ -108,6 +111,7 @@ export const OrderProvider = ({children}) => {
     searchOrder,
 		addOrder,
     editOrder,
+    orderEdit,
   }}>
     {children}
   </OrderContext.Provider>
