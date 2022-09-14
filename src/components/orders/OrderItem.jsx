@@ -1,9 +1,9 @@
 import OrderContext from "../../context/OrderContext"
 import { useContext } from "react"
-import { FaEdit } from "react-icons/fa"
+import { FaEdit, FaRegTimesCircle } from "react-icons/fa"
 
 function OrderItem({items}) {
-  const { editOrder } = useContext(OrderContext)
+  const { editOrder, deleteOrder } = useContext(OrderContext)
 
   const columns = [
     { accessor: "id", label: "id" },
@@ -27,6 +27,11 @@ function OrderItem({items}) {
           <td>
             <button>
               <FaEdit onClick={() => editOrder(item)} />
+            </button>
+          </td>
+          <td>
+            <button>
+              <FaRegTimesCircle onClick={() => deleteOrder(item)} />
             </button>
           </td>
         </tr>

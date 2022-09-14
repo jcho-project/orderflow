@@ -30,6 +30,7 @@ function OrderList() {
               return <th key={column.accessor}>{column.label}</th>
             })}
             <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>

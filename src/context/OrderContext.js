@@ -54,12 +54,30 @@ export const OrderProvider = ({children}) => {
 		setNewOrder([data, ...orders])
 	}
 
+  // Edit order and redirect to edit page
   const editOrder = (item) => {
     setOrderEdit({
       item,
       edit: true
     })
     navigate("/edit")
+  }
+
+  // Delete order
+  const deleteOrder = async (item) => {
+    const deletedOrderList = orders.filter((order) => order.id !== item.id)
+
+    const response = await fetch("/orders", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(deletedOrderList)
+    })
+
+    const data = await response.json()
+
+    setOrders(data)
   }
   
   // search bill-to for order
@@ -111,6 +129,7 @@ export const OrderProvider = ({children}) => {
     searchOrder,
 		addOrder,
     editOrder,
+    deleteOrder,
     orderEdit,
   }}>
     {children}

@@ -141,6 +141,17 @@
       "line_status": "Booked",
       "customer_po": "",
       "id": 12
+    },
+    {
+      "bill-to": "",
+      "ship-to": "",
+      "model": "",
+      "quantity": 0,
+      "price": 0,
+      "order_status": "Booked",
+      "line_status": "Booked",
+      "customer_po": "",
+      "id": 13
     }
   ]
 }
