@@ -65,19 +65,9 @@ export const OrderProvider = ({children}) => {
 
   // Delete order
   const deleteOrder = async (item) => {
-    const deletedOrderList = orders.filter((order) => order.id !== item.id)
+    await fetch(`orders/${item.id}`, {method: "DELETE"})
 
-    const response = await fetch("/orders", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(deletedOrderList)
-    })
-
-    const data = await response.json()
-
-    setOrders(data)
+    setOrders(orders.filter((order) => order.id !== item.id))
   }
   
   // search bill-to for order

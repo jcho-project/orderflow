@@ -73,7 +73,7 @@ function CreateForm() {
         <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
 
         <button type="submit">Submit</button>
-        <button>Close</button>
+        <button type="button" onClick={() => navigate("/")}>Close</button>
       </form>
     </>
   )

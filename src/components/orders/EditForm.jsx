@@ -47,7 +47,7 @@ function EditForm() {
       <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={handleSubmit}>
         <h4>Bill To</h4>
-        <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
+        <select name="bill-to" value={orderEdit["bill-to"]} onChange={handleInputChange} >
           <option value=""></option>
           <option value="MSH">MSH</option>
           <option value="Saturn">Saturn</option>
@@ -75,7 +75,7 @@ function EditForm() {
         <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
 
         <button type="submit">Submit</button>
-        <button>Close</button>
+        <button type="button" onClick={() => navigate("/")}>Close</button>
       </form>
     </>
   )

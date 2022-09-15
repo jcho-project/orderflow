@@ -105,8 +105,7 @@
       "order_status": "Booked",
       "line_status": "Booked",
       "customer_po": "",
-      "id": 9,
-      "selected": false
+      "id": 9
     },
     {
       "bill-to": "",
@@ -117,11 +116,10 @@
       "order_status": "Booked",
       "line_status": "Booked",
       "customer_po": "",
-      "id": 10,
-      "selected": false
+      "id": 10
     },
     {
-      "bill-to": "",
+      "bill-to": "MSH",
       "ship-to": "",
       "model": "",
       "quantity": 0,
@@ -132,7 +130,7 @@
       "id": 11
     },
     {
-      "bill-to": "",
+      "bill-to": "Saturn",
       "ship-to": "",
       "model": "",
       "quantity": 0,
@@ -141,17 +139,6 @@
       "line_status": "Booked",
       "customer_po": "",
       "id": 12
-    },
-    {
-      "bill-to": "",
-      "ship-to": "",
-      "model": "",
-      "quantity": 0,
-      "price": 0,
-      "order_status": "Booked",
-      "line_status": "Booked",
-      "customer_po": "",
-      "id": 13
     }
   ]
 }
