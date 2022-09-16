@@ -17,7 +17,7 @@ export const OrderProvider = ({children}) => {
 
   const navigate = useNavigate()
   
-  // search order
+  // search order from db
   const searchOrder = async (item) => {
     const response = await fetch("/orders?_sort=id")
     const data = await response.json()
@@ -61,6 +61,21 @@ export const OrderProvider = ({children}) => {
       edit: true
     })
     navigate("/edit")
+  }
+
+  // Update order and redirect to home page
+  const updateOrder = async (id, updItem) => {
+    const response = await fetch(`/orders/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updItem)
+    })
+
+    const data = await response.json()
+
+    setOrders(orders.map((item) => item.id === id ? {...item, ...data} : item))
   }
 
   // Delete order
@@ -121,6 +136,7 @@ export const OrderProvider = ({children}) => {
     editOrder,
     deleteOrder,
     orderEdit,
+    updateOrder
   }}>
     {children}
   </OrderContext.Provider>

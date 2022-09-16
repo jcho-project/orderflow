@@ -3,7 +3,7 @@ import OrderContext from "../../context/OrderContext"
 import { useNavigate } from "react-router-dom"
 
 function EditForm() {
-  const { addOrder, orderEdit } = useContext(OrderContext)
+  const { addOrder, orderEdit, updateOrder } = useContext(OrderContext)
 
   const navigate = useNavigate()
 
