@@ -3,19 +3,19 @@ import OrderContext from "../../context/OrderContext"
 import { useNavigate } from "react-router-dom"
 
 function EditForm() {
-  const { addOrder, orderEdit, updateOrder } = useContext(OrderContext)
+  const { orderEdit, updateOrder } = useContext(OrderContext)
 
   const navigate = useNavigate()
 
   const initialValues = {
-    "bill-to": "",
-    "ship-to": "",
-    "model": "",
-    "quantity": 0,
-    "price": 0,
-    "order_status": "Booked",
-    "line_status": "Booked",
-    "customer_po": "",
+    "bill-to": orderEdit.item["bill-to"],
+    "ship-to": orderEdit.item["ship-to"],
+    "model": orderEdit.item["model"],
+    "quantity": orderEdit.item["quantity"],
+    "price": orderEdit.item["price"],
+    "order_status": orderEdit.item["order_status"],
+    "line_status": orderEdit.item["line_status"],
+    "customer_po": orderEdit.item["customer_po"],
   }
 
   const [values, setValues] = useState(initialValues)
@@ -23,9 +23,9 @@ function EditForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(orderEdit)
+    console.log(e.target["bill-to"].value)
+    console.log(typeof(e.target))
 
-    addOrder(values)
     navigate("/")
   }
 
@@ -47,7 +47,7 @@ function EditForm() {
       <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={handleSubmit}>
         <h4>Bill To</h4>
-        <select name="bill-to" value={orderEdit["bill-to"]} onChange={handleInputChange} >
+        <select name="bill-to" value={values["bill-to"]} onChange={handleInputChange} >
           <option value=""></option>
           <option value="MSH">MSH</option>
           <option value="Saturn">Saturn</option>
