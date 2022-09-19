@@ -10,6 +10,7 @@ function OrderInput() {
 	const handleSearch = (e) => {
 		e.preventDefault()
 		searchOrder(searchValue)
+		setSearchValue("")
 	}
 
 	const renderBillTo = (item) => {

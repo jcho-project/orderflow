@@ -8,6 +8,7 @@ function EditForm() {
   const navigate = useNavigate()
 
   const initialValues = {
+    "id": orderEdit.item["id"],
     "bill-to": orderEdit.item["bill-to"],
     "ship-to": orderEdit.item["ship-to"],
     "model": orderEdit.item["model"],
@@ -23,8 +24,11 @@ function EditForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(e.target["bill-to"].value)
-    console.log(typeof(e.target))
+    // console.log(e.target.id.value)
+    // console.log(orderEdit.item.id)
+    // console.log(e.target)
+
+    updateOrder(orderEdit.item.id, values)
 
     navigate("/")
   }
