@@ -70,10 +70,10 @@ function EditForm() {
         <input type="text" value={values["model"]} name="model" onChange={handleInputChange} />
 
         <h4>Qty</h4>
-        <input type="text" value={values["quantity"]} name="quantity" onChange={handleInputChange} />
+        <input type="number" value={values["quantity"]} name="quantity" onChange={handleInputChange} />
 
         <h4>Price</h4>
-        <input type="text" value={values["price"]} name="price" onChange={handleInputChange} />
+        <input type="number" value={values["price"]} name="price" onChange={handleInputChange} />
 
         <h4>Customer PO</h4>
         <input type="text" value={values["customer_po"]} name="customer_po" onChange={handleInputChange} />
