@@ -13,42 +13,42 @@ function OrderInput() {
 		setSearchValue("")
 	}
 
-	const renderBillTo = (item) => {
-		if (item.length === 0) {
-			return <p>No Bill To</p>
-		} else {
-			return <p>{item}</p>
-		}
-	}
+	// const renderBillTo = (item) => {
+	// 	if (item.length === 0) {
+	// 		return <p>No Bill To</p>
+	// 	} else {
+	// 		return <p>{item}</p>
+	// 	}
+	// }
 
-	const renderShipTo = (item) => {
-		if (item.length === 0) {
-			return <p>No Ship To</p>
-		} else {
-			return <p>{item}</p>
-		}
-	}
+	// const renderShipTo = (item) => {
+	// 	if (item.length === 0) {
+	// 		return <p>No Ship To</p>
+	// 	} else {
+	// 		return <p>{item}</p>
+	// 	}
+	// }
 
-	const renderCustomerPo = (item) => {
-		if (item.toString().length === 0) {
-			return <p>No Customer PO</p>
-		} else {
-			return <p>{item}</p>
-		}
-	}
+	// const renderCustomerPo = (item) => {
+	// 	if (item.toString().length === 0) {
+	// 		return <p>No Customer PO</p>
+	// 	} else {
+	// 		return <p>{item}</p>
+	// 	}
+	// }
 
-	const renderOrderStatus = (item) => {
-		if (item.length === 0) {
-			return <p>No Order Status</p>
-		} else {
-			return <p>{item}</p>
-		}
-	}
+	// const renderOrderStatus = (item) => {
+	// 	if (item.length === 0) {
+	// 		return <p>No Order Status</p>
+	// 	} else {
+	// 		return <p>{item}</p>
+	// 	}
+	// }
 
   return (
     <div className="input-container">
 			<div className="input-group">
-				<div className="customer">
+				{/* <div className="customer">
 					<h3>Customer</h3>
 					<div className="sub-heading">Bill To</div>
 					{renderBillTo(billTo)}
@@ -68,7 +68,7 @@ function OrderInput() {
 					<h3>Order Status</h3>
 					<div className="sub-heading">Status</div>
 					{renderOrderStatus(orderStatus)}
-				</div>
+				</div> */}
 				<div className="order-number">
 					<form onSubmit={handleSearch}>
 						<h3>Order No.</h3>
