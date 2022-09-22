@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 function Login() {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -28,11 +30,26 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    const { uname, pass } = e.target
+
+    const userData = loginDatabase.find((user) => user.username === uname.value)
+
+    if (userData) {
+      if (userData.password !== pass.value) {
+        setErrorMessages({ name: "pass", message: errors.pass })
+      } else {
+        setIsSubmitted(true)
+      }
+    } else {
+      setErrorMessages({ name: "uname", message: errors.uname })
+    }
+    
+
+    console.log(e.target.uname.value)
   }
 
   return (
-    <div className="form">
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="input-container">
         <label>Username </label>
         <input type="text" name="uname" required />
@@ -43,11 +60,8 @@ function Login() {
         <input type="password" name="pass" required />
         {renderErrorMessage("pass")}
       </div>
-      <div className="button-container">
-        <input type="submit" />
-      </div>
+      <button type="submit">Submit</button>
     </form>
-  </div>
   )
 }
 

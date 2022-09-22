@@ -1,4 +1,4 @@
-import { FaBell, FaCog, FaUserCircle, FaPlus } from "react-icons/fa"
+import { FaBell, FaCog, FaUserCircle, FaPlus, FaQuestion } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 function Navbar() {
@@ -27,6 +27,11 @@ function Navbar() {
 					<li>
 						<Link to="/">
 							<FaUserCircle size={20} />
+						</Link>
+					</li>
+					<li>
+						<Link to="/about">
+							<FaQuestion size={20} />
 						</Link>
 					</li>
 				</ul>
