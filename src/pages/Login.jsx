@@ -22,9 +22,9 @@ function Login() {
   }
 
   const renderErrorMessage = (name) => {
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    )
+    if (name === errorMessages.name) {
+      return <div className="error">{errorMessages.message}</div>
+    }
   }
 
   const handleSubmit = (e) => {
@@ -39,29 +39,37 @@ function Login() {
         setErrorMessages({ name: "pass", message: errors.pass })
       } else {
         setIsSubmitted(true)
+        setErrorMessages({})
       }
     } else {
       setErrorMessages({ name: "uname", message: errors.uname })
     }
-    
 
+    
     console.log(e.target.uname.value)
   }
 
-  return (
+  const renderForm = (
     <form onSubmit={handleSubmit}>
-      <div className="input-container">
-        <label>Username </label>
-        <input type="text" name="uname" required />
-        {renderErrorMessage("uname")}
-      </div>
-      <div className="input-container">
-        <label>Password </label>
-        <input type="password" name="pass" required />
-        {renderErrorMessage("pass")}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="input-container">
+      <label>Username </label>
+      <input type="text" name="uname" required />
+      {renderErrorMessage("uname")}
+    </div>
+    <div className="input-container">
+      <label>Password </label>
+      <input type="password" name="pass" required />
+      {renderErrorMessage("pass")}
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  )
+
+  return (
+    <div className="login-form">
+      <div className="title">Sign In</div>
+      {false ? <div>User is successfully logged in</div> : renderForm}
+    </div>
   )
 }
 

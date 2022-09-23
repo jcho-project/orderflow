@@ -8,7 +8,7 @@ function Home() {
       <OrderInput />
       {/* <OrderList /> */}
       <Login />
-      {true ? <div>User is successfully logged in</div> : <OrderList />}
+      {/* {true ? <div>User is successfully logged in</div> : <OrderList />} */}
     </>
   )
 }
