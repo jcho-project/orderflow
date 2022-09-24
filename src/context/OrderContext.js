@@ -14,6 +14,8 @@ export const OrderProvider = ({children}) => {
     item: {},
     edit: false
   })
+  const [errorMessages, setErrorMessages] = useState({})
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const navigate = useNavigate()
   
@@ -84,6 +86,52 @@ export const OrderProvider = ({children}) => {
 
     setOrders(orders.filter((order) => order.id !== item.id))
   }
+
+  // User Login info
+  const loginDatabase = [
+    {
+      username: "user1",
+      password: "pass1"
+    },
+    {
+      username: "user2",
+      password: "pass2"
+    }
+  ]
+
+  const errors = {
+    uname: "Invalid Username",
+    pass: "Invalid Password"
+  }
+
+  const renderErrorMessage = (name) => {
+    if (name === errorMessages.name) {
+      return <div className="error">{errorMessages.message}</div>
+    }
+  }
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+
+    const { uname, pass } = e.target
+
+    const userData = loginDatabase.find((user) => user.username === uname.value)
+
+    if (userData) {
+      if (userData.password !== pass.value) {
+        setErrorMessages({ name: "pass", message: errors.pass })
+      } else {
+        setIsSubmitted(true)
+        setErrorMessages({})
+      }
+    } else {
+      setErrorMessages({ name: "uname", message: errors.uname })
+    }
+  }
+
+  const logOut = () => {
+    setIsSubmitted(false)
+  }
   
   // search bill-to for order
   const updateBillTo = (item) => {
@@ -136,7 +184,11 @@ export const OrderProvider = ({children}) => {
     editOrder,
     deleteOrder,
     orderEdit,
-    updateOrder
+    updateOrder,
+    renderErrorMessage,
+    handleLoginSubmit,
+    isSubmitted,
+    logOut
   }}>
     {children}
   </OrderContext.Provider>
