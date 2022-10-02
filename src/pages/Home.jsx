@@ -5,12 +5,12 @@ import OrderContext from "../context/OrderContext"
 import Login from "./Login"
 
 function Home() {
-  const { isSubmitted } = useContext(OrderContext)
+  const { loggedInUser } = useContext(OrderContext)
 
   return (
     <>
       <OrderInput />
-      {isSubmitted ? <OrderList /> : <Login />}
+      {Object.keys(loggedInUser).length !== 0 ? <OrderList /> : <Login />}
     </>
   )
 }

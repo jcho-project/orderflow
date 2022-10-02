@@ -15,9 +15,11 @@ export const OrderProvider = ({children}) => {
     edit: false
   })
   const [errorMessages, setErrorMessages] = useState({})
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const navigate = useNavigate()
+  let loggedInUser = window.localStorage
   
   // search order from db
   const searchOrder = async (item) => {
@@ -121,8 +123,9 @@ export const OrderProvider = ({children}) => {
       if (userData.password !== pass.value) {
         setErrorMessages({ name: "pass", message: errors.pass })
       } else {
-        setIsSubmitted(true)
         setErrorMessages({})
+        window.localStorage.setItem(userData.username, userData.password)
+        loggedInUser = window.localStorage
       }
     } else {
       setErrorMessages({ name: "uname", message: errors.uname })
@@ -130,7 +133,7 @@ export const OrderProvider = ({children}) => {
   }
 
   const logOut = () => {
-    setIsSubmitted(false)
+    window.localStorage.clear()
   }
   
   // search bill-to for order
@@ -187,8 +190,8 @@ export const OrderProvider = ({children}) => {
     updateOrder,
     renderErrorMessage,
     handleLoginSubmit,
-    isSubmitted,
-    logOut
+    logOut,
+    loggedInUser,
   }}>
     {children}
   </OrderContext.Provider>
