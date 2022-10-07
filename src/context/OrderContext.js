@@ -15,8 +15,6 @@ export const OrderProvider = ({children}) => {
     edit: false
   })
   const [errorMessages, setErrorMessages] = useState({})
-  // const [isSubmitted, setIsSubmitted] = useState(false)
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const navigate = useNavigate()
   let loggedInUser = window.localStorage
