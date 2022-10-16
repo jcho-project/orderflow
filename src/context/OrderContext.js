@@ -82,22 +82,22 @@ export const OrderProvider = ({children}) => {
 
   // Delete order
   const deleteOrder = async (item) => {
-    await fetch(`orders/${item.id}`, {method: "DELETE"})
+    await fetch(`/orders/${item.id}`, {method: "DELETE"})
 
     setOrders(orders.filter((order) => order.id !== item.id))
   }
 
-  // User Login info
-  const loginDatabase = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ]
+  // // User Login info
+  // const loginDatabase = [
+  //   {
+  //     username: "user1",
+  //     password: "pass1"
+  //   },
+  //   {
+  //     username: "user2",
+  //     password: "pass2"
+  //   }
+  // ]
 
   const errors = {
     uname: "Invalid Username",
@@ -114,20 +114,35 @@ export const OrderProvider = ({children}) => {
     e.preventDefault()
 
     const { uname, pass } = e.target
+    
+    console.log(uname.value)
 
-    const userData = loginDatabase.find((user) => user.username === uname.value)
+    const unameValue = uname.value
 
-    if (userData) {
-      if (userData.password !== pass.value) {
-        setErrorMessages({ name: "pass", message: errors.pass })
-      } else {
-        setErrorMessages({})
-        window.localStorage.setItem(userData.username, userData.password)
-        loggedInUser = window.localStorage
-      }
-    } else {
-      setErrorMessages({ name: "uname", message: errors.uname })
+    // const userData = loginDatabase.find((user) => user.username === uname.value)
+
+    const searchLogin = async (uname) => {
+      const response = await fetch(`/loginDatabase`)
+
+      const data = await response.json()
+
+      console.log(data)
+      // return loginDatabase = await response.json()
     }
+    
+    searchLogin(unameValue)
+
+    // if (userData) {
+    //   if (userData.password !== pass.value) {
+    //     setErrorMessages({ name: "pass", message: errors.pass })
+    //   } else {
+    //     setErrorMessages({})
+    //     window.localStorage.setItem(userData.username, userData.password)
+    //     loggedInUser = window.localStorage
+    //   }
+    // } else {
+    //   setErrorMessages({ name: "uname", message: errors.uname })
+    // }
   }
 
   const logOut = () => {
