@@ -115,22 +115,35 @@ export const OrderProvider = ({children}) => {
 
     const { uname, pass } = e.target
     
-    console.log(uname.value)
-
     const unameValue = uname.value
+    const passValue = pass.value
 
     // const userData = loginDatabase.find((user) => user.username === uname.value)
 
-    const searchLogin = async (uname) => {
+    const searchLogin = async (uname, pass) => {
       const response = await fetch(`/loginDatabase`)
 
       const data = await response.json()
 
       console.log(data)
+
+      if (data.find(element => element.username === uname)) {
+        console.log("found a matching username")
+        if (data.find(element => element.password !== pass)) {
+          console.log("wrong password")
+          setErrorMessages({ name: "pass", message: errors.pass })
+        } else {
+          setErrorMessages({})
+          window.localStorage.setItem(uname, pass)
+          loggedInUser = window.localStorage
+        }
+      } else {
+        setErrorMessages({ name: "uname", message: errors.uname })
+      }
       // return loginDatabase = await response.json()
     }
     
-    searchLogin(unameValue)
+    searchLogin(unameValue, passValue)
 
     // if (userData) {
     //   if (userData.password !== pass.value) {
