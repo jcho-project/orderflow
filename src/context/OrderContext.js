@@ -115,7 +115,9 @@ export const OrderProvider = ({children}) => {
 
     const { uname, pass } = e.target
     
+    // Login username input by user
     const unameValue = uname.value
+    // Login password input by user
     const passValue = pass.value
 
     // const userData = loginDatabase.find((user) => user.username === uname.value)
@@ -127,19 +129,41 @@ export const OrderProvider = ({children}) => {
 
       console.log(data)
 
-      if (data.find(element => element.username === uname)) {
-        console.log("found a matching username")
-        if (data.find(element => element.password !== pass)) {
-          console.log("wrong password")
-          setErrorMessages({ name: "pass", message: errors.pass })
-        } else {
+      // Set of login input key value pair (username, password) searched based on user input username
+      const loginInput = data.find(element => element.username === uname)
+
+      console.log(loginInput)
+
+      if (loginInput.username === uname) {
+        if (loginInput.password === pass) {
           setErrorMessages({})
           window.localStorage.setItem(uname, pass)
           loggedInUser = window.localStorage
+        } else {
+          console.log("wrong password")
+          setErrorMessages({ name: "pass", message: errors.pass })
         }
       } else {
+        console.log("wrong username")
         setErrorMessages({ name: "uname", message: errors.uname })
       }
+
+      // if (data.find(element => element.username === uname)) {
+      //   console.log("found a matching username")
+      //   if (data.find(element => element.password === pass)) {
+      //     console.log("found a matching password")
+      //     setErrorMessages({})
+      //     window.localStorage.setItem(uname, pass)
+      //     loggedInUser = window.localStorage
+      //   } else {
+      //     console.log(pass)
+      //     console.log("wrong password")
+      //     setErrorMessages({ name: "pass", message: errors.pass })
+      //   }
+      // } else {
+      //   console.log("wrong username")
+      //   setErrorMessages({ name: "uname", message: errors.uname })
+      // }
       // return loginDatabase = await response.json()
     }
     
