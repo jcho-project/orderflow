@@ -101,7 +101,8 @@ export const OrderProvider = ({children}) => {
 
   const errors = {
     uname: "Invalid Username",
-    pass: "Invalid Password"
+    pass: "Invalid Password",
+    nouser: "Not a Registered User"
   }
 
   const renderErrorMessage = (name) => {
@@ -110,6 +111,38 @@ export const OrderProvider = ({children}) => {
     }
   }
 
+  const searchLogin = async (uname, pass) => {
+    const response = await fetch(`/loginDatabase`)
+
+    const data = await response.json()
+
+    // Set of login input key value pair (username, password) searched based on user input username
+    const loginInput = data.find(element => element.username === uname)
+
+    // Does loginInput exist?
+    if (loginInput !== undefined) {
+      // if loginInput.username === uname?
+      if (loginInput.username === uname) {
+        // if loginInput.password === pass?
+        if (loginInput.password === pass) {
+          // Login success
+          setErrorMessages({})
+          window.localStorage.setItem(uname, pass)
+          loggedInUser = window.localStorage
+        } else {
+          // else throw "wrong password" error
+          setErrorMessages({ name: "pass", message: errors.pass })
+        }
+      } else {
+        // else  throw "wrong username" error
+        setErrorMessages({ name: "uname", message: errors.uname })
+      }
+    } else {
+      // else throw "no registered user with username" error
+      setErrorMessages({ name: "nouser", message: errors.nouser })
+    }
+  }
+  
   const handleLoginSubmit = (e) => {
     e.preventDefault()
 
@@ -122,64 +155,7 @@ export const OrderProvider = ({children}) => {
 
     // const userData = loginDatabase.find((user) => user.username === uname.value)
 
-    const searchLogin = async (uname, pass) => {
-      const response = await fetch(`/loginDatabase`)
-
-      const data = await response.json()
-
-      console.log(data)
-
-      // Set of login input key value pair (username, password) searched based on user input username
-      const loginInput = data.find(element => element.username === uname)
-
-      console.log(loginInput)
-
-      if (loginInput.username === uname) {
-        if (loginInput.password === pass) {
-          setErrorMessages({})
-          window.localStorage.setItem(uname, pass)
-          loggedInUser = window.localStorage
-        } else {
-          console.log("wrong password")
-          setErrorMessages({ name: "pass", message: errors.pass })
-        }
-      } else {
-        console.log("wrong username")
-        setErrorMessages({ name: "uname", message: errors.uname })
-      }
-
-      // if (data.find(element => element.username === uname)) {
-      //   console.log("found a matching username")
-      //   if (data.find(element => element.password === pass)) {
-      //     console.log("found a matching password")
-      //     setErrorMessages({})
-      //     window.localStorage.setItem(uname, pass)
-      //     loggedInUser = window.localStorage
-      //   } else {
-      //     console.log(pass)
-      //     console.log("wrong password")
-      //     setErrorMessages({ name: "pass", message: errors.pass })
-      //   }
-      // } else {
-      //   console.log("wrong username")
-      //   setErrorMessages({ name: "uname", message: errors.uname })
-      // }
-      // return loginDatabase = await response.json()
-    }
-    
     searchLogin(unameValue, passValue)
-
-    // if (userData) {
-    //   if (userData.password !== pass.value) {
-    //     setErrorMessages({ name: "pass", message: errors.pass })
-    //   } else {
-    //     setErrorMessages({})
-    //     window.localStorage.setItem(userData.username, userData.password)
-    //     loggedInUser = window.localStorage
-    //   }
-    // } else {
-    //   setErrorMessages({ name: "uname", message: errors.uname })
-    // }
   }
 
   const logOut = () => {

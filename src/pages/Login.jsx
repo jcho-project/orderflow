@@ -7,6 +7,7 @@ function Login() {
   return (
     <form onSubmit={handleLoginSubmit}>
       <div className="input-container">
+        {renderErrorMessage("nouser")}
         <label>Username </label>
         <input type="text" name="uname" required />
         {renderErrorMessage("uname")}
