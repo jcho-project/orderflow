@@ -1,8 +1,16 @@
 import { useContext } from "react"
 import OrderContext from "../context/OrderContext"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
   const { renderErrorMessage, handleLoginSubmit } = useContext(OrderContext)
+
+  const navigate = useNavigate()
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+    navigate("/register")
+  }
 
   return (
     <form onSubmit={handleLoginSubmit}>
@@ -17,7 +25,8 @@ function Login() {
         <input type="password" name="pass" required />
         {renderErrorMessage("pass")}
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Login</button>
+      <button onClick={handleRegister}>Register</button>
     </form>
   )
 }
