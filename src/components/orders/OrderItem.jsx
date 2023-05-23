@@ -20,9 +20,9 @@ function OrderItem({items}) {
   return (
     items.map(item => {
       return (
-        <tr key={item.id}>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.id}>
           {columns.map(column => {
-            return <td key={column.accessor}>{item[column.accessor]}</td>
+            return <td class="px-6 py-4" key={column.accessor}>{item[column.accessor]}</td>
           })}
           <td>
             <button>

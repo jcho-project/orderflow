@@ -19,8 +19,7 @@
       "price": 10.5,
       "order_status": "Booked",
       "line_status": "Booked",
-      "customer_po": 30486,
-      "selected": false
+      "customer_po": "30487"
     },
     {
       "id": 2,

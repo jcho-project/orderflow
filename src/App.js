@@ -6,6 +6,7 @@ import CreateForm from "./components/orders/CreateForm"
 import EditForm from "./components/orders/EditForm"
 import Register from "./pages/Register"
 import { OrderProvider } from "./context/OrderContext"
+import "./index.css"
 
 function App() {
   return (
