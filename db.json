@@ -2,11 +2,18 @@
   "loginDatabase": [
     {
       "username": "user1",
-      "password": "pass1"
+      "password": "pass1",
+      "access": "admin"
     },
     {
       "username": "user2",
-      "password": "pass2"
+      "password": "pass2",
+      "access": "general"
+    },
+    {
+      "username": "user3",
+      "password": "pass3",
+      "access": "limited"
     }
   ],
   "orders": [

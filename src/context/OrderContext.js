@@ -87,18 +87,6 @@ export const OrderProvider = ({children}) => {
     setOrders(orders.filter((order) => order.id !== item.id))
   }
 
-  // // User Login info
-  // const loginDatabase = [
-  //   {
-  //     username: "user1",
-  //     password: "pass1"
-  //   },
-  //   {
-  //     username: "user2",
-  //     password: "pass2"
-  //   }
-  // ]
-
   const errors = {
     uname: "Invalid Username",
     pass: "Invalid Password",
