@@ -27,10 +27,10 @@ function OrderList() {
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             {columns.map(column => {
-              return <th key={column.accessor}>{column.label}</th>
+              return <th scope="col" class="px-6 py-3" key={column.accessor}>{column.label}</th>
             })}
-            <th>Edit</th>
-            <th>Delete</th>
+            <th scope="col" class="px-6 py-3">Edit</th>
+            <th scope="col" class="px-6 py-3">Delete</th>
           </tr>
         </thead>
         <tbody>

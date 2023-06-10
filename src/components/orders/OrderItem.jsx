@@ -20,16 +20,16 @@ function OrderItem({items}) {
   return (
     items.map(item => {
       return (
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={item.id}>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={item.id}>
           {columns.map(column => {
-            return <td class="px-6 py-4" key={column.accessor}>{item[column.accessor]}</td>
+            return <td class="w-4 p-4" key={column.accessor}>{item[column.accessor]}</td>
           })}
-          <td>
+          <td class="px-6 py-4">
             <button>
               <FaEdit onClick={() => editOrder(item)} />
             </button>
           </td>
-          <td>
+          <td class="px-6 py-4">
             <button>
               <FaRegTimesCircle onClick={() => deleteOrder(item)} />
             </button>
