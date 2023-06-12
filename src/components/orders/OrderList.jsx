@@ -22,21 +22,21 @@ function OrderList() {
   ]
 
   return (
-    <div className="container">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
+    <div className="shadow-md overflow-x-auto sm:rounded-lg m-4">
+      <table className="w-full text-sm text-left text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-100">
+          <tr className="border-b border-gray-200">
             {columns.map(column => {
-              return <th scope="col" class="px-6 py-3" key={column.accessor}>{column.label}</th>
+              return <th scope="col" className="px-6 py-4" key={column.accessor}>{column.label}</th>
             })}
-            <th scope="col" class="px-6 py-3">Edit</th>
-            <th scope="col" class="px-6 py-3">Delete</th>
+            <th scope="col" className="px-6 py-4">Edit</th>
+            <th scope="col" className="px-6 py-4">Delete</th>
           </tr>
         </thead>
         <tbody>
           <OrderItem items={orders} />
         </tbody>
-      </table>
+        </table>
     </div>
   )
 }

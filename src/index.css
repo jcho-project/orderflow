@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
 
-:root {
+/* :root {
   --primary: #5893d4;
   --secondary: #3379cd;
   --white: #f4f4f8;
@@ -24,7 +24,7 @@ body {
 
 /* navigation */
 
-nav {
+/* nav {
   background-color: var(--secondary);
   height: 60px;
   width: 100%;
@@ -68,7 +68,7 @@ nav {
 
 /* order input */
 
-.input-container {
+/* .input-container {
   display: flex;
   justify-content: center;
 }
@@ -82,7 +82,7 @@ nav {
 
 /* order form */
 
-.title {
+/* .title {
   width: 90%;
   margin: auto;
   margin-bottom: 20px;
@@ -97,7 +97,7 @@ nav {
 
 /* order table */
 
-table {
+/* table {
   width: 100%;
   border: 1px solid black;
 }
@@ -123,7 +123,7 @@ input {
 
 /* button */
 
-.controls {
+/* .controls {
   display: flex;
   justify-content: right;
 }
@@ -148,7 +148,7 @@ input {
 
 /* modal */
 
-.modal {
+/* .modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -177,4 +177,4 @@ input {
   padding: 10px;
   border-top: 1px solid var(--white);
   border-bottom: 1px solid var(--white);
-}
+} */
