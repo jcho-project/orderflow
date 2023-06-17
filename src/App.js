@@ -1,12 +1,12 @@
-import { Route, Routes } from "react-router-dom"
-import Navbar from "./components/layout/Navbar"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import CreateForm from "./components/orders/CreateForm"
-import EditForm from "./components/orders/EditForm"
-import Register from "./pages/Register"
-import { OrderProvider } from "./context/OrderContext"
-import "./index.css"
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import CreateForm from './components/orders/CreateForm';
+import EditForm from './components/orders/EditForm';
+import Register from './pages/Register';
+import { OrderProvider } from './context/OrderContext';
+import './index.css';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
       </Routes>
     </OrderProvider>
-  )
+  );
 }
 
 export default App;

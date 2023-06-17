@@ -1,11 +1,10 @@
 function Register() {
-
   const registerSubmit = (e) => {
-    e.preventDefault()
-    console.log("register request has been made")
-    console.log(e.target.reguname.value)
-    console.log(e.target.regpass.value)
-  }
+    e.preventDefault();
+    console.log('register request has been made');
+    console.log(e.target.reguname.value);
+    console.log(e.target.regpass.value);
+  };
 
   return (
     <form onSubmit={registerSubmit}>
@@ -22,7 +21,7 @@ function Register() {
       </div>
       <button type="submit">Login</button>
     </form>
-  )
+  );
 }
 
-export default Register
+export default Register;

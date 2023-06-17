@@ -1,54 +1,54 @@
-import { useContext, useState } from "react"
-import OrderContext from "../../context/OrderContext"
-import { FaEdit } from "react-icons/fa"
+import { useContext, useState } from 'react';
+import OrderContext from '../../context/OrderContext';
+import { FaEdit } from 'react-icons/fa';
 
 function OrderInput() {
-	const [searchValue, setSearchValue] =useState("")
+  const [searchValue, setSearchValue] = useState('');
 
-	const { searchOrder, billTo, shipTo, customerPo, orderStatus } = useContext(OrderContext)
+  const { searchOrder, billTo, shipTo, customerPo, orderStatus } = useContext(OrderContext);
 
-	const handleSearch = (e) => {
-		e.preventDefault()
-		searchOrder(searchValue)
-		setSearchValue("")
-	}
+  const handleSearch = (e) => {
+    e.preventDefault();
+    searchOrder(searchValue);
+    setSearchValue('');
+  };
 
-	// const renderBillTo = (item) => {
-	// 	if (item.length === 0) {
-	// 		return <p>No Bill To</p>
-	// 	} else {
-	// 		return <p>{item}</p>
-	// 	}
-	// }
+  // const renderBillTo = (item) => {
+  // 	if (item.length === 0) {
+  // 		return <p>No Bill To</p>
+  // 	} else {
+  // 		return <p>{item}</p>
+  // 	}
+  // }
 
-	// const renderShipTo = (item) => {
-	// 	if (item.length === 0) {
-	// 		return <p>No Ship To</p>
-	// 	} else {
-	// 		return <p>{item}</p>
-	// 	}
-	// }
+  // const renderShipTo = (item) => {
+  // 	if (item.length === 0) {
+  // 		return <p>No Ship To</p>
+  // 	} else {
+  // 		return <p>{item}</p>
+  // 	}
+  // }
 
-	// const renderCustomerPo = (item) => {
-	// 	if (item.toString().length === 0) {
-	// 		return <p>No Customer PO</p>
-	// 	} else {
-	// 		return <p>{item}</p>
-	// 	}
-	// }
+  // const renderCustomerPo = (item) => {
+  // 	if (item.toString().length === 0) {
+  // 		return <p>No Customer PO</p>
+  // 	} else {
+  // 		return <p>{item}</p>
+  // 	}
+  // }
 
-	// const renderOrderStatus = (item) => {
-	// 	if (item.length === 0) {
-	// 		return <p>No Order Status</p>
-	// 	} else {
-	// 		return <p>{item}</p>
-	// 	}
-	// }
+  // const renderOrderStatus = (item) => {
+  // 	if (item.length === 0) {
+  // 		return <p>No Order Status</p>
+  // 	} else {
+  // 		return <p>{item}</p>
+  // 	}
+  // }
 
   return (
     <div className="input-container">
-			<div className="input-group">
-				{/* <div className="customer">
+      <div className="input-group">
+        {/* <div className="customer">
 					<h3>Customer</h3>
 					<div className="sub-heading">Bill To</div>
 					{renderBillTo(billTo)}
@@ -69,19 +69,21 @@ function OrderInput() {
 					<div className="sub-heading">Status</div>
 					{renderOrderStatus(orderStatus)}
 				</div> */}
-				<div className="order-number">
-					<form onSubmit={handleSearch}>
-						<h3>Order No.</h3>
-						<div className="sub-heading">Sales Order Number</div>
-						<input type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} />
-						<button type="submit">
-								Search
-						</button>
-					</form>
-				</div>
-			</div>
+        <div className="order-number">
+          <form onSubmit={handleSearch}>
+            <h3>Order No.</h3>
+            <div className="sub-heading">Sales Order Number</div>
+            <input
+              type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default OrderInput
+export default OrderInput;
