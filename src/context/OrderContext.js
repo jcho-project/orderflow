@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const OrderContext = createContext();
 
@@ -214,5 +215,9 @@ export const OrderProvider = ({ children }) => {
     </OrderContext.Provider>
   );
 };
+
+OrderContext.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
+}
 
 export default OrderContext;

@@ -3,7 +3,7 @@ import OrderContext from '../../context/OrderContext';
 import OrderItem from './OrderItem';
 
 function OrderList() {
-  const { orders, searchOrder, editOrder } = useContext(OrderContext);
+  const { orders, searchOrder } = useContext(OrderContext);
 
   useEffect(() => {
     searchOrder('');
