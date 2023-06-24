@@ -17,7 +17,6 @@ function OrderInput() {
       <div className="input-group">
         <div className="order-number">
           <form onSubmit={handleSearch}>
-            <h3>Order No.</h3>
             <div className="sub-heading">Sales Order Number</div>
             <input
               type="text"
