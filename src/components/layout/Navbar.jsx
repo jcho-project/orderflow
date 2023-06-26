@@ -13,44 +13,44 @@ function Navbar() {
         <div className="flex justify-start items-center">
           <Link to="/" className="flex mr-4">
             <img src="https://flowbite.s3.amazonaws.com/logo.svg" className="mr-3 h-8" alt="FlowBite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Flowbite</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">OrderFlow</span>
           </Link>
           <OrderInput />
         </div>
-      </div>
-      <div className="navigation-menu">
-        <ul>
-          <li>
-            <Link to="/create">
-              <FaPlus size={20} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FaBell size={20} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FaCog size={20} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FaUserCircle size={20} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <FaDoorOpen onClick={logOut} size={20} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/about">
-              <FaQuestion size={20} />
-            </Link>
-          </li>
-        </ul>
+        <div className="flex justify-between items-center">
+          <ul className='flex'>
+            <li className='px-3 text-white'>
+              <Link to="/create">
+                <FaPlus size={20} />
+              </Link>
+            </li>
+            <li className='px-3 text-white'>
+              <Link to="/">
+                <FaBell size={20} />
+              </Link>
+            </li>
+            <li className='px-3 text-white'>
+              <Link to="/">
+                <FaCog size={20} />
+              </Link>
+            </li>
+            <li className='px-3 text-white'>
+              <Link to="/">
+                <FaUserCircle size={20} />
+              </Link>
+            </li>
+            <li className='px-3 text-white'>
+              <Link to="/">
+                <FaDoorOpen onClick={logOut} size={20} />
+              </Link>
+            </li>
+            <li className='px-3 text-white'>
+              <Link to="/about">
+                <FaQuestion size={20} />
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );
