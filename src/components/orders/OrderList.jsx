@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import OrderContext from '../../context/OrderContext';
 import OrderItem from './OrderItem';
+import PageTitle from './PageTitle';
 
 function OrderList() {
   const { orders, searchOrder } = useContext(OrderContext);
@@ -23,6 +24,7 @@ function OrderList() {
 
   return (
     <div className="shadow-md overflow-x-auto sm:rounded-lg m-4">
+      <PageTitle />
       <table className="w-full text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-100">
           <tr className="border-b border-gray-200">
