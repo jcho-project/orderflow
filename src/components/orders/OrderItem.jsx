@@ -19,7 +19,7 @@ function OrderItem({ items }) {
 
   return items.map((item) => {
     return (
-      <tr className="border-b border-gray-200 bg-white hover:bg-gray-50" key={item.id}>
+      <tr className="bg-white hover:bg-gray-50" key={item.id}>
         {columns.map((column) => {
           return (
             <td className="px-6 py-2" key={column.accessor}>

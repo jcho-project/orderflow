@@ -23,11 +23,11 @@ function OrderList() {
   ];
 
   return (
-    <div className="shadow-md overflow-x-auto sm:rounded-lg m-4">
+    <div className="overflow-x-auto m-4">
       <PageTitle />
       <table className="w-full text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-100">
-          <tr className="border-b border-gray-200">
+          <tr>
             {columns.map((column) => {
               return (
                 <th scope="col" className="px-6 py-4" key={column.accessor}>

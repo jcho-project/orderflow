@@ -8,7 +8,7 @@ function Navbar() {
   const { logOut } = useContext(OrderContext);
 
   return (
-    <nav className='bg-gray-800 border-gray-200 px-4 lg:px-6 py-2.5'>
+    <nav className='bg-[#3379CD] px-4 lg:px-6 py-2.5'>
       <div className="flex flex-wrap justify-between items-center">
         <div className="flex justify-start items-center">
           <Link to="/" className="flex mr-4">
