@@ -1,7 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { auth } from "../config/firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ function Register() {
     password: "",
   });
 
-  const {email, password } = formData;
+  const { email, password } = formData;
 
   const navigate = useNavigate();
 
@@ -42,12 +42,12 @@ function Register() {
     <form onSubmit={registerSubmit}>
       <div className="input-container">
         {/* {renderErrorMessage("nouser")} */}
-        <label>Username </label>
+        <label>Email</label>
         <input type="email" label="Email Address" value={email} onChange={onChange} name="email" required />
         {/* {renderErrorMessage("uname")} */}
       </div>
       <div className="input-container">
-        <label>Password </label>
+        <label>Password</label>
         <input type="password" label="Create Password" value={password} onChange={onChange} name="password" required />
         {/* {renderErrorMessage("pass")} */}
       </div>
