@@ -3,20 +3,22 @@ import { useState } from 'react';
 import OrderContext from '../context/OrderContext';
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../config/firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
 
 function Login() {
   const { renderErrorMessage, handleLoginSubmit } = useContext(OrderContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
+  const [user, setUser] = useState({});
   const { email, password } = formData;
 
-  const navigate = useNavigate();
-
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
   
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -29,9 +31,27 @@ function Login() {
     e.preventDefault();
     navigate('/register');
   };
+  
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+      console.log(user)
+      navigate("/")
+    } catch(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    }
+  }
 
   return (
-    <form onSubmit={handleLoginSubmit}>
+    <form onSubmit={handleLogin}>
       <div className="input-container">
         {renderErrorMessage('nouser')}
         <label>Email</label>
