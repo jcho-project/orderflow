@@ -4,11 +4,11 @@ import OrderContext from '../context/OrderContext';
 import Login from './Login';
 
 function Home() {
-  const { loggedInUser } = useContext(OrderContext);
+  const { user } = useContext(OrderContext);
 
   return (
     <>
-      {Object.keys(loggedInUser).length !== 0 ? <OrderList /> : <Login />}
+      {user.length !== 0 ? <OrderList /> : <Login />}
     </>
   );
 }

@@ -6,14 +6,13 @@ import { auth } from "../config/firebase"
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
 
 function Login() {
-  const { renderErrorMessage, handleLoginSubmit } = useContext(OrderContext);
+  const { renderErrorMessage, handleLoginSubmit, user } = useContext(OrderContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  // const [user, setUser] = useState({});
   const { email, password } = formData;
 
   // onAuthStateChanged(auth, (currentUser) => {
