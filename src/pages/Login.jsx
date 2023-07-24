@@ -13,7 +13,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const { email, password } = formData;
 
   // onAuthStateChanged(auth, (currentUser) => {

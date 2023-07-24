@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { auth } from "../config/firebase"
+import { auth, db } from "../config/firebase"
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore"
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -30,6 +31,12 @@ function Register() {
       );
 
       const user = userCredential.user;
+
+      const formDataCopy = {...formData}
+      delete formDataCopy.password
+      formDataCopy.timestamp = serverTimestamp()
+
+      await setDoc(doc(db, "users", user.uid), formDataCopy)
       console.log(user)
       navigate("/")
     } catch (error) {
