@@ -1,14 +1,19 @@
-import { useContext } from 'react';
+import { useState, useEffect } from 'react';
+import { auth } from "../config/firebase"
 import OrderList from '../components/orders/OrderList';
-import OrderContext from '../context/OrderContext';
 import Login from './Login';
 
 function Home() {
-  const { user } = useContext(OrderContext);
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    setUser(auth.currentUser)
+    console.log(auth.currentUser)
+  })
 
   return (
     <>
-      {user.length !== 0 ? <OrderList /> : <Login />}
+      {user ? <OrderList /> : <Login />}
     </>
   );
 }

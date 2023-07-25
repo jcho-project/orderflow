@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-  const [user, setUser] = useState({});
   const [orders, setOrders] = useState([]);
   const [billTo, setBillTo] = useState('');
   const [shipTo, setShipTo] = useState('');
@@ -189,7 +188,6 @@ export const OrderProvider = ({ children }) => {
   return (
     <OrderContext.Provider
       value={{
-        user,
         orders,
         billTo,
         shipTo,

@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import OrderContext from '../context/OrderContext';
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../config/firebase"
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
+import { signInWithEmailAndPassword } from "firebase/auth"
 
 function Login() {
-  const { renderErrorMessage, handleLoginSubmit, user } = useContext(OrderContext);
+  const { renderErrorMessage, handleLoginSubmit } = useContext(OrderContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -14,10 +13,6 @@ function Login() {
     password: "",
   });
   const { email, password } = formData;
-
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser);
-  // });
   
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -41,8 +36,7 @@ function Login() {
       );
 
       const user = userCredential.user;
-      console.log(user)
-      navigate("/")
+      navigate("/about")
     } catch(error) {
       const errorCode = error.code;
       const errorMessage = error.message;
