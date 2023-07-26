@@ -1,11 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
+import { OrderProvider } from './context/OrderContext';
 import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import CreateForm from './components/orders/CreateForm';
 import EditForm from './components/orders/EditForm';
 import SignUp from './pages/SignUp';
-import { OrderProvider } from './context/OrderContext';
+import ForgotPassword from './pages/ForgotPassword';
+import Profile from './pages/Profile';
 import './index.css';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route exact path="/edit" element={<EditForm />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/register" element={<SignUp />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </OrderProvider>
   );
