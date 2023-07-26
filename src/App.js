@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import CreateForm from './components/orders/CreateForm';
 import EditForm from './components/orders/EditForm';
-import Register from './pages/Register';
+import SignUp from './pages/SignUp';
 import { OrderProvider } from './context/OrderContext';
 import './index.css';
 
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/create" element={<CreateForm />} />
         <Route exact path="/edit" element={<EditForm />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/register" element={<SignUp />} />
       </Routes>
     </OrderProvider>
   );

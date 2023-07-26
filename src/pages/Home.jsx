@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { auth } from "../config/firebase"
 import OrderList from '../components/orders/OrderList';
-import Login from './Login';
+import SignIn from './SignIn';
 
 function Home() {
   const [user, setUser] = useState(null)
@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <>
-      {user ? <OrderList /> : <Login />}
+      {user ? <OrderList /> : <SignIn />}
     </>
   );
 }
