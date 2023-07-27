@@ -14,7 +14,6 @@ export const OrderProvider = ({ children }) => {
     item: {},
     edit: false,
   });
-  const [errorMessages, setErrorMessages] = useState({});
 
   const navigate = useNavigate();
 
@@ -86,65 +85,6 @@ export const OrderProvider = ({ children }) => {
     setOrders(orders.filter((order) => order.id !== item.id));
   };
 
-  const errors = {
-    uname: 'Invalid Username',
-    pass: 'Invalid Password',
-    nouser: 'Not a Registered User',
-  };
-
-  const renderErrorMessage = (name) => {
-    if (name === errorMessages.name) {
-      return <div className="error">{errorMessages.message}</div>;
-    }
-  };
-
-  const searchLogin = async (uname, pass) => {
-    const response = await fetch(`/loginDatabase`);
-
-    const data = await response.json();
-
-    // Set of login input key value pair (username, password) searched based on user input username
-    const loginInput = data.find((element) => element.username === uname);
-
-    // Does loginInput exist?
-    if (loginInput !== undefined) {
-      // if loginInput.username === uname?
-      if (loginInput.username === uname) {
-        // if loginInput.password === pass?
-        if (loginInput.password === pass) {
-          // Login success
-          setErrorMessages({});
-          window.localStorage.setItem(uname, pass);
-          // loggedInUser = window.localStorage;
-        } else {
-          // else throw "wrong password" error
-          setErrorMessages({ name: 'pass', message: errors.pass });
-        }
-      } else {
-        // else  throw "wrong username" error
-        setErrorMessages({ name: 'uname', message: errors.uname });
-      }
-    } else {
-      // else throw "no registered user with username" error
-      setErrorMessages({ name: 'nouser', message: errors.nouser });
-    }
-  };
-
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-
-    const { uname, pass } = e.target;
-
-    // Login username input by user
-    const unameValue = uname.value;
-    // Login password input by user
-    const passValue = pass.value;
-
-    // const userData = loginDatabase.find((user) => user.username === uname.value)
-
-    searchLogin(unameValue, passValue);
-  };
-
   const logOut = () => {
     window.localStorage.clear();
   };
@@ -203,8 +143,6 @@ export const OrderProvider = ({ children }) => {
         deleteOrder,
         orderEdit,
         updateOrder,
-        renderErrorMessage,
-        handleLoginSubmit,
         logOut,
       }}
     >
