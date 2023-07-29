@@ -35,7 +35,7 @@ function Navbar() {
               </Link>
             </li>
             <li className='px-3 text-white'>
-              <Link to="/">
+              <Link to="/profile">
                 <FaUserCircle size={20} />
               </Link>
             </li>
