@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { auth, db } from "../config/firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore"
 
 function Register() {
@@ -35,6 +35,10 @@ function Register() {
           );
     
           const user = userCredential.user;
+
+          await updateProfile(auth.currentUser, {
+            displayName: displayName
+          })
     
           const formDataCopy = {...formData}
           delete formDataCopy.password

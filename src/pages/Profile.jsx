@@ -15,8 +15,6 @@ function Profile() {
 
   const user = auth.currentUser;
 
-  console.log("User", user)
-
   // The user object has basic properties such as display name, email, etc.
   const displayName = user.displayName;
 
