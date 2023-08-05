@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { auth } from "../config/firebase"
-import { doc, getDoc, updateDoc } from "firebase/firestore"
+import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../config/firebase"
 import { updateProfile } from "firebase/auth"
 import { useNavigate } from "react-router-dom";
@@ -13,12 +13,7 @@ function Profile() {
     email: auth.currentUser.email
   })
 
-  const user = auth.currentUser;
-
-  // The user object has basic properties such as display name, email, etc.
-  const displayName = user.displayName;
-
-  const {name, email} = formData
+  const { name, email } = formData
 
   const navigate = useNavigate()
 
@@ -27,16 +22,35 @@ function Profile() {
     navigate("/")
   }
 
-  console.log(auth.currentUser)
+  const onSubmit = async () => {
+    try {
+      if (auth.currentUser.displayName !== name) {
+        // Update display name in firebase
+        await updateProfile(auth.currentUser, {
+          displayName: name
+        })
+
+        // Update in firestore
+        const userRef = doc(db, "users", auth.currentUser.uid)
+        await updateDoc(userRef, {
+          name
+        })
+      }
+    } catch (error) {
+      console.log(error)
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    }
+  }
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }))
+  }
 
   return (
-    // <div className="flex flex-col w-2/4 items-center justify-center bg-white border border-gray-200 rounded-lg shadow">
-    //   <FaUserCircle size={50} />
-    //   <h5 className="mb-1 text-xl font-medium text-gray-900">{displayName}</h5>
-    //   <p className="text-sm text-gray-500">{email}</p>
-    //   <button type="button" onClick={onLogout} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Log Out</button>
-    // </div>
-
     <section className="flex font-medium items-center justify-center h-screen">
       <section className="w-64 mx-auto bg-[#20354b] rounded-2xl px-8 py-6 shadow-lg">
           <div className="flex items-center justify-between">
@@ -48,11 +62,32 @@ function Profile() {
           </div>
 
           <div className="mt-8 ">
-              <h2 className="text-white font-bold text-2xl tracking-wide">{displayName}</h2>
+              <h2 className="text-white font-bold text-2xl tracking-wide">{name}</h2>
           </div>
-          <p className="text-emerald-400 font-semibold mt-2.5" >
-              Active
-          </p>
+          <p className="text-emerald-400 font-semibold mt-2.5" >Active</p>
+          <p onClick={() => {
+            changeDetails && onSubmit()
+            setChangeDetails((prevState) => !prevState)
+          }}>{changeDetails ? "done" : "change"}</p>
+
+          <form>
+            <input
+              type="text"
+              id="name"
+              className={!changeDetails ? "profileName" : "profileNameActive"}
+              disabled={!changeDetails}
+              value={name}
+              onChange={onChange}
+            />
+            <input
+              type="text"
+              id="email"
+              className={!changeDetails ? "profileEmail" : "profileEmailActive"}
+              disabled={!changeDetails}
+              value={email}
+              onChange={onChange}
+            />
+          </form>
       </section>
     </section>
   )
