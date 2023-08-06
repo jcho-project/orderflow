@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { OrderProvider } from './context/OrderContext';
 import Navbar from './components/layout/Navbar';
+import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import About from './pages/About';
 import CreateForm from './components/orders/CreateForm';
@@ -9,7 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
-import './index.css';
+// import './index.css';
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/profile" element={<PrivateRoute />}>
+          <Route exact path="/profile" element={<Profile />} />
+        </Route>
         <Route exact path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </OrderProvider>
