@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { useState } from 'react';
 import { auth } from "../config/firebase"
 import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../config/firebase"
@@ -9,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 function Profile() {
   const [changeDetails, setChangeDetails] = useState(false)
   const [formData, setFormData] = useState({
-    name: auth.currentUser.displayName,
+    displayName: auth.currentUser.displayName,
     email: auth.currentUser.email
   })
 
-  const { name, email } = formData
+  const { displayName, email } = formData
 
   const navigate = useNavigate()
 
@@ -24,16 +23,16 @@ function Profile() {
 
   const onSubmit = async () => {
     try {
-      if (auth.currentUser.displayName !== name) {
+      if (auth.currentUser.displayName !== displayName) {
         // Update display name in firebase
         await updateProfile(auth.currentUser, {
-          displayName: name
+          displayName: displayName
         })
 
         // Update in firestore
         const userRef = doc(db, "users", auth.currentUser.uid)
         await updateDoc(userRef, {
-          name
+          displayName
         })
       }
     } catch (error) {
@@ -73,10 +72,10 @@ function Profile() {
           <form>
             <input
               type="text"
-              id="name"
+              id="displayName"
               className={!changeDetails ? "profileName" : "profileNameActive"}
               disabled={!changeDetails}
-              value={name}
+              value={displayName}
               onChange={onChange}
             />
             <input
@@ -88,6 +87,7 @@ function Profile() {
               onChange={onChange}
             />
           </form>
+          <button onClick={onLogout}>Log Out</button>
       </section>
     </section>
   )
