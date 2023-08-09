@@ -1,4 +1,6 @@
 import { useContext, useEffect } from 'react';
+import { collection, query, doc, getDocs } from "firebase/firestore"
+import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 import OrderItem from './OrderItem';
 import PageTitle from './PageTitle';
@@ -9,6 +11,14 @@ function OrderList() {
   useEffect(() => {
     searchOrder('');
   }, []);
+
+  const q = query(collection(db, "orders"));
+
+  const querySnapshot = getDocs(q);
+
+  console.log(querySnapshot)
+
+
 
   const columns = [
     { accessor: 'id', label: 'id' },
