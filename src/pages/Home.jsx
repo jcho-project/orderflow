@@ -8,7 +8,6 @@ function Home() {
 
   useEffect(() => {
     setUser(auth.currentUser)
-    console.log(auth.currentUser)
   })
 
   return (
