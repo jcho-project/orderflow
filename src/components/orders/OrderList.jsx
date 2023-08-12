@@ -20,12 +20,16 @@ function OrderList() {
   async function getOrders() {
     const orderSnapshot = await getDocs(collection(db, "orders"));
 
-    // orderSnapshot.forEach((order) => {
-    //   // console.log(order.id, " => ", order.data());
+    orderSnapshot.forEach((order) => {
+      const orderData = order.data()
+      const orderParse = []
 
-    //   setOrderList(order)
-    // });
-    console.log(orderSnapshot)
+      // Add order id to document object
+      orderData.id = order.id
+      orderParse.push(orderData)
+
+      setOrderList(orderParse)
+    });
   }
 
   const columns = [
@@ -62,7 +66,7 @@ function OrderList() {
           </tr>
         </thead>
         <tbody>
-          <OrderItem items={orders} />
+          <OrderItem items={orderList} />
         </tbody>
       </table>
     </div>
