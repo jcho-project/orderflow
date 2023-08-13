@@ -1,11 +1,20 @@
 import { useContext, useState } from 'react';
 import OrderContext from '../../context/OrderContext';
+import { doc, updateDoc } from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 
 function EditForm() {
-  const { orderEdit, updateOrder } = useContext(OrderContext);
+  const { orderEdit, updateOrder } = useContext(OrderContext)
+  const [values, setValues] = useState(initialValues)
+  const [editOrderItem, setEditOrderItem] = useState({})
 
   const navigate = useNavigate();
+
+  const updateOrderFirestore = (e) => {
+    e.preventDefault();
+
+
+  }
 
   const initialValues = {
     id: orderEdit.item['id'],
@@ -19,14 +28,9 @@ function EditForm() {
     customer_po: orderEdit.item['customer_po'],
   };
 
-  const [values, setValues] = useState(initialValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // console.log(e.target.id.value)
-    // console.log(orderEdit.item.id)
-    // console.log(e.target)
 
     updateOrder(orderEdit.item.id, values);
 
