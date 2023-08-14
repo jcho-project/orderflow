@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import OrderContext from '../../context/OrderContext';
 import { doc, updateDoc } from "firebase/firestore"
+import { db } from "../../config/firebase"
 import { useNavigate } from 'react-router-dom';
 
 function EditForm() {
@@ -10,8 +11,12 @@ function EditForm() {
 
   const navigate = useNavigate();
 
-  const updateOrderFirestore = (e) => {
+  async function updateOrderFirestore(e) {
     e.preventDefault();
+
+    const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
+
+    console.log(orderEdit.item.id)
 
 
   }
