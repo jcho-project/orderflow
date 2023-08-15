@@ -57,10 +57,10 @@ export const OrderProvider = ({ children }) => {
   // Edit order and redirect to edit page
   const editOrder = (item) => {
     setOrderEdit({
-      item,
+      item: item,
       edit: true,
     });
-    navigate('/edit');
+    navigate('/edit')
   };
 
   // Update order and redirect to home page

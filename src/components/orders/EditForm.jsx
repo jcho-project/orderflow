@@ -6,21 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function EditForm() {
   const { orderEdit, updateOrder } = useContext(OrderContext)
-  const [values, setValues] = useState(initialValues)
-  const [editOrderItem, setEditOrderItem] = useState({})
-
-  const navigate = useNavigate();
-
-  async function updateOrderFirestore(e) {
-    e.preventDefault();
-
-    const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
-
-    console.log(orderEdit.item.id)
-
-
-  }
-
+  
   const initialValues = {
     id: orderEdit.item['id'],
     'bill-to': orderEdit.item['bill-to'],
@@ -33,6 +19,20 @@ function EditForm() {
     customer_po: orderEdit.item['customer_po'],
   };
 
+  const [values, setValues] = useState(initialValues)
+  const [editOrderItem, setEditOrderItem] = useState({})
+
+  const navigate = useNavigate();
+
+  async function updateOrderFirestore(e) {
+    e.preventDefault();
+
+    const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
+
+    console.log(orderEdit.item.id)
+    console.log(values)
+    updateDoc(orderToBeUpdated, values)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +58,7 @@ function EditForm() {
   return (
     <>
       <h2 className="title">Sales Order Entry</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={updateOrderFirestore}>
         <h4>Bill To</h4>
         <select name="bill-to" value={values['bill-to']} onChange={handleInputChange}>
           <option value=""></option>
