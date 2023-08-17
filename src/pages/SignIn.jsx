@@ -10,6 +10,7 @@ function Login() {
     email: "",
     password: "",
   });
+
   const { email, password } = formData;
   
   const onChange = (e) => {

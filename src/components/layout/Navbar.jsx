@@ -2,10 +2,18 @@ import { FaBell, FaCog, FaUserCircle, FaPlus, FaQuestion, FaDoorOpen } from 'rea
 import { useContext } from 'react';
 import OrderContext from '../../context/OrderContext';
 import { Link } from 'react-router-dom';
+import { auth } from "../../config/firebase"
+import { useNavigate } from 'react-router-dom';
 import OrderInput from '../orders/OrderInput';
 
 function Navbar() {
   const { logOut } = useContext(OrderContext);
+  const navigate = useNavigate()
+
+  const onLogout = () => {
+    auth.signOut()
+    navigate("/")
+  }
 
   return (
     <nav className='bg-[#3379CD] px-4 lg:px-6 py-2.5'>
@@ -41,7 +49,7 @@ function Navbar() {
             </li>
             <li className='px-3 text-white'>
               <Link to="/">
-                <FaDoorOpen onClick={logOut} size={20} />
+                <FaDoorOpen onClick={onLogout} size={20} />
               </Link>
             </li>
             <li className='px-3 text-white'>

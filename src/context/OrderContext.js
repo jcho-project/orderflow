@@ -11,8 +11,7 @@ export const OrderProvider = ({ children }) => {
   const [orderStatus, setOrderStatus] = useState('');
   const [newOrder, setNewOrder] = useState([]);
   const [orderEdit, setOrderEdit] = useState({
-    item: {},
-    edit: false,
+    item: {}
   });
 
   const navigate = useNavigate();
@@ -57,26 +56,25 @@ export const OrderProvider = ({ children }) => {
   // Edit order and redirect to edit page
   const editOrder = (item) => {
     setOrderEdit({
-      item: item,
-      edit: true,
+      item: item
     });
     navigate('/edit')
   };
 
-  // Update order and redirect to home page
-  const updateOrder = async (id, updItem) => {
-    const response = await fetch(`/orders/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updItem),
-    });
+  // // Update order and redirect to home page
+  // const updateOrder = async (id, updItem) => {
+  //   const response = await fetch(`/orders/${id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(updItem),
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    setOrders(orders.map((item) => (item.id === id ? { ...item, ...data } : item)));
-  };
+  //   setOrders(orders.map((item) => (item.id === id ? { ...item, ...data } : item)));
+  // };
 
   // Delete order
   const deleteOrder = async (item) => {
@@ -142,7 +140,7 @@ export const OrderProvider = ({ children }) => {
         editOrder,
         deleteOrder,
         orderEdit,
-        updateOrder,
+        // updateOrder,
         logOut,
       }}
     >

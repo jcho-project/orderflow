@@ -5,7 +5,7 @@ import { db } from "../../config/firebase"
 import { useNavigate } from 'react-router-dom';
 
 function EditForm() {
-  const { orderEdit, updateOrder } = useContext(OrderContext)
+  const { orderEdit } = useContext(OrderContext)
   
   const initialValues = {
     id: orderEdit.item['id'],
@@ -17,30 +17,29 @@ function EditForm() {
     order_status: orderEdit.item['order_status'],
     line_status: orderEdit.item['line_status'],
     customer_po: orderEdit.item['customer_po'],
-  };
+  }
 
   const [values, setValues] = useState(initialValues)
-  const [editOrderItem, setEditOrderItem] = useState({})
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   async function updateOrderFirestore(e) {
     e.preventDefault();
 
     const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
 
-    console.log(orderEdit.item.id)
-    console.log(values)
     updateDoc(orderToBeUpdated, values)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    updateOrder(orderEdit.item.id, values);
 
     navigate('/');
-  };
+  }
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   updateOrder(orderEdit.item.id, values);
+
+  //   navigate('/');
+  // };
 
   const handleInputChange = (e) => {
     e.preventDefault();
