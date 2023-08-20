@@ -11,6 +11,8 @@ function Navbar() {
   const navigate = useNavigate()
 
   const onLogout = () => {
+    console.log("onLogOut hit")
+    console.log(auth)
     auth.signOut()
     navigate("/")
   }
