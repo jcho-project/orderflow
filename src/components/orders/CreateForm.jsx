@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react';
 import OrderContext from '../../context/OrderContext';
+import { collection, doc, setDoc } from "firebase/firestore"
+import { db } from "../../config/firebase"
 import { useNavigate } from 'react-router-dom';
 
 function CreateForm() {
@@ -23,7 +25,13 @@ function CreateForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addOrder(values);
+    const newDocRef = doc(collection(db, "orders"))
+    setDoc(
+      newDocRef,
+      values
+    )
+
+    // addOrder(values);
     navigate('/');
   };
 

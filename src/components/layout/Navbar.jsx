@@ -14,7 +14,7 @@ function Navbar() {
     console.log("onLogOut hit")
     console.log(auth)
     auth.signOut()
-    navigate("/")
+    navigate("/profile")
   }
 
   return (
