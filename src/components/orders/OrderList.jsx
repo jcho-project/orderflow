@@ -19,10 +19,10 @@ function OrderList() {
 
   async function getOrders() {
     const orderSnapshot = await getDocs(collection(db, "orders"));
-
+    const orderParse = []
+    
     orderSnapshot.forEach((order) => {
       const orderData = order.data()
-      const orderParse = []
 
       // Add order id to document object
       orderData.id = order.id
