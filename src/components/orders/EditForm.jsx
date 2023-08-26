@@ -33,14 +33,6 @@ function EditForm() {
     navigate('/');
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   updateOrder(orderEdit.item.id, values);
-
-  //   navigate('/');
-  // };
-
   const handleInputChange = (e) => {
     e.preventDefault();
     // const name = e.target.name

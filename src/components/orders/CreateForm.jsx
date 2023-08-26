@@ -27,13 +27,15 @@ function CreateForm() {
 
     const newDocRef = doc(collection(db, "orders"))
 
-    console.log(newDocRef.path)
+    
+    values.id = newDocRef.id
+    
+    console.log("newDocRef.id",newDocRef.id)
+    console.log("values", values)
 
-    await setDoc(
-      newDocRef.id,
-      values,
-    )
-    navigate('/');
+    await setDoc(newDocRef, values)
+
+    navigate('/')
   };
 
   const handleInputChange = (e) => {
