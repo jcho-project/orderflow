@@ -19,11 +19,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'simple-import-sort'],
   rules: {
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
     "no-unused-vars": "off",
     'react/prop-types': 'off',
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
 };
