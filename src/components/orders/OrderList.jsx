@@ -1,5 +1,6 @@
+import { collection, doc, getDocs,query } from "firebase/firestore"
 import { useContext, useEffect, useState } from 'react';
-import { collection, query, doc, getDocs } from "firebase/firestore"
+
 import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 import OrderItem from './OrderItem';

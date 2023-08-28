@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react';
-import OrderContext from '../../context/OrderContext';
 import { collection, doc, setDoc } from "firebase/firestore"
-import { db } from "../../config/firebase"
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { db } from "../../config/firebase"
+import OrderContext from '../../context/OrderContext';
 
 function CreateForm() {
   const { addOrder } = useContext(OrderContext);

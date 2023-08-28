@@ -1,6 +1,7 @@
-import OrderContext from '../../context/OrderContext';
 import { useContext } from 'react';
 import { FaEdit, FaRegTimesCircle } from 'react-icons/fa';
+
+import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
   const { editOrder, deleteOrder } = useContext(OrderContext);
