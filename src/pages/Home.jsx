@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { auth } from "../config/firebase"
+import { useEffect, useState } from 'react';
+
 import OrderList from '../components/orders/OrderList';
+import { auth } from "../config/firebase"
 import SignIn from './SignIn';
 
 function Home() {

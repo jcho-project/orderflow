@@ -1,9 +1,10 @@
-import { FaBell, FaCog, FaUserCircle, FaPlus, FaQuestion, FaDoorOpen } from 'react-icons/fa';
 import { useContext } from 'react';
-import OrderContext from '../../context/OrderContext';
+import { FaBell, FaCog, FaDoorOpen,FaPlus, FaQuestion, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { auth } from "../../config/firebase"
 import { useNavigate } from 'react-router-dom';
+
+import { auth } from "../../config/firebase"
+import OrderContext from '../../context/OrderContext';
 import OrderInput from '../orders/OrderInput';
 
 function Navbar() {

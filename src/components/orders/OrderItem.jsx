@@ -15,7 +15,6 @@ function OrderItem({ items }) {
     { accessor: 'price', label: 'Price' },
     { accessor: 'customer_po', label: 'Customer PO' },
     { accessor: 'line_status', label: 'Line Status' },
-    // { accessor: "price", label: "Price", format: value => (value ? "✔️" : "✖️") },
   ];
 
   return items.map((item) => {

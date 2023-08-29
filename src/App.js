@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { OrderProvider } from './context/OrderContext';
+
 import Navbar from './components/layout/Navbar';
-import PrivateRoute from './components/PrivateRoute';
-import Home from './pages/Home';
-import About from './pages/About';
 import CreateForm from './components/orders/CreateForm';
 import EditForm from './components/orders/EditForm';
+import PrivateRoute from './components/PrivateRoute';
+import { OrderProvider } from './context/OrderContext';
+import About from './pages/About';
+import ForgotPassword from './pages/ForgotPassword';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import ForgotPassword from './pages/ForgotPassword';
-import Profile from './pages/Profile';
-// import './index.css';
 
 function App() {
   return (

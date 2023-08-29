@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { auth } from "../config/firebase"
-import { doc, updateDoc } from "firebase/firestore"
-import { db } from "../config/firebase"
 import { updateProfile } from "firebase/auth"
+import { doc, updateDoc } from "firebase/firestore"
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+
+import { auth } from "../config/firebase"
+import { db } from "../config/firebase"
 
 function Profile() {
   const [changeDetails, setChangeDetails] = useState(false)
