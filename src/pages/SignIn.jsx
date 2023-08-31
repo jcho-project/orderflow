@@ -31,7 +31,7 @@ function Login() {
       );
 
       const user = userCredential.user;
-      navigate("/profile")
+      navigate("/orders")
     } catch(error) {
       const errorCode = error.code;
       const errorMessage = error.message;
