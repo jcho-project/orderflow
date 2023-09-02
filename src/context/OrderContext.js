@@ -1,9 +1,13 @@
+import { collection, getDocs } from "firebase/firestore"
 import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { db } from "../config/firebase"
 
 const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
+  const [orderList, setOrderList] = useState([])
   const [orders, setOrders] = useState([]);
   const [billTo, setBillTo] = useState('');
   const [shipTo, setShipTo] = useState('');
@@ -36,6 +40,27 @@ export const OrderProvider = ({ children }) => {
     }
   };
 
+  // get doc from order collection in firebase
+  async function getOrders() {
+    const orderSnapshot = await getDocs(collection(db, "orders"));
+    const orderParse = []
+    console.log(orderList)
+    
+    orderSnapshot.forEach((order) => {
+      const orderData = order.data()
+
+      // Add order id to document object
+      orderData.id = order.id
+      orderParse.push(orderData)
+
+      // console.log("BEFORE : ", orderList)
+      // console.log("AFTER : ", orderList)
+    });
+
+    setOrderList(orderParse)
+  }
+
+
   // Add order to db
   const addOrder = async (newOrder) => {
     const response = await fetch('/orders', {
@@ -59,17 +84,6 @@ export const OrderProvider = ({ children }) => {
       item: item
     });
     navigate('/edit')
-  };
-
-  // Delete order
-  const deleteOrder = async (item) => {
-    await fetch(`/orders/${item.id}`, { method: 'DELETE' });
-
-    setOrders(orders.filter((order) => order.id !== item.id));
-  };
-
-  const logOut = () => {
-    window.localStorage.clear();
   };
 
   // search bill-to for order
@@ -123,9 +137,9 @@ export const OrderProvider = ({ children }) => {
         searchOrder,
         addOrder,
         editOrder,
-        deleteOrder,
         orderEdit,
-        logOut,
+        getOrders,
+        orderList,
       }}
     >
       {children}

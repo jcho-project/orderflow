@@ -7,7 +7,7 @@ import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
-  const { editOrder, deleteOrder } = useContext(OrderContext);
+  const { editOrder } = useContext(OrderContext);
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function OrderItem({ items }) {
 
     await deleteDoc(deleteDocRef)
 
-    navigate('/')
+    navigate('/orders')
   }
 
   return items.map((item) => {

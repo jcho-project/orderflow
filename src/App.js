@@ -8,6 +8,7 @@ import { OrderProvider } from './context/OrderContext';
 import About from './pages/About';
 import ForgotPassword from './pages/ForgotPassword';
 import Home from './pages/Home';
+import Orders from './pages/Orders';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/orders" element={<Orders />} />
         <Route exact path="/create" element={<CreateForm />} />
         <Route exact path="/edit" element={<EditForm />} />
         <Route exact path="/about" element={<About />} />

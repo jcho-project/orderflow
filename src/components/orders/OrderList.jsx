@@ -1,4 +1,4 @@
-import { collection, doc, getDocs,query } from "firebase/firestore"
+import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from 'react';
 
 import { db } from "../../config/firebase"
@@ -7,31 +7,11 @@ import OrderItem from './OrderItem';
 import PageTitle from './PageTitle';
 
 function OrderList() {
-  const { orders, searchOrder } = useContext(OrderContext);
-  const [orderList, setOrderList] = useState([])
-
-  // useEffect(() => {
-  //   searchOrder('');
-  // }, []);
-
+  const { orderList, getOrders } = useContext(OrderContext);
+  
   useEffect(() => {
     getOrders();
   }, []);
-
-  async function getOrders() {
-    const orderSnapshot = await getDocs(collection(db, "orders"));
-    const orderParse = []
-    
-    orderSnapshot.forEach((order) => {
-      const orderData = order.data()
-
-      // Add order id to document object
-      orderData.id = order.id
-      orderParse.push(orderData)
-
-      setOrderList(orderParse)
-    });
-  }
 
   const columns = [
     { accessor: 'id', label: 'id' },

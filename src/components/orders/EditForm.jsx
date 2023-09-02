@@ -31,7 +31,7 @@ function EditForm() {
 
     updateDoc(orderToBeUpdated, values)
 
-    navigate('/');
+    navigate('/orders');
   }
 
   const handleInputChange = (e) => {

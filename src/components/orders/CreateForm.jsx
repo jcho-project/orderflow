@@ -36,7 +36,7 @@ function CreateForm() {
 
     await setDoc(newDocRef, values)
 
-    navigate('/')
+    navigate('/orders')
   };
 
   const handleInputChange = (e) => {
