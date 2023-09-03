@@ -47,7 +47,7 @@ function Register() {
           formDataCopy.timestamp = serverTimestamp()
     
           await setDoc(doc(db, "users", user.uid), formDataCopy)
-          navigate("/")
+          navigate("/orders")
   
       } catch (error) {
         const errorCode = error.code;

@@ -28,12 +28,8 @@ function CreateForm() {
 
     const newDocRef = doc(collection(db, "orders"))
 
-    
     values.id = newDocRef.id
     
-    console.log("newDocRef.id",newDocRef.id)
-    console.log("values", values)
-
     await setDoc(newDocRef, values)
 
     navigate('/orders')

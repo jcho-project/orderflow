@@ -1,5 +1,5 @@
 import { collection, deleteDoc, doc } from "firebase/firestore"
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FaEdit, FaRegTimesCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
   const { editOrder } = useContext(OrderContext);
+  const [idToBeDeleted, setIdToBeDeleted] = useState('')
 
   const navigate = useNavigate();
 
@@ -23,11 +24,13 @@ function OrderItem({ items }) {
   ];
 
   async function deleteOrderSubmit(item) {
+    setIdToBeDeleted(item.id)
     const deleteDocRef = doc(collection(db, "orders"), item.id)
 
     await deleteDoc(deleteDocRef)
 
-    navigate('/orders')
+    setIdToBeDeleted("")
+    navigate("/orders")
   }
 
   return items.map((item) => {
