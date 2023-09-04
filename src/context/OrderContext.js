@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,71 +8,41 @@ const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
   const [orderList, setOrderList] = useState([])
-  // const [orders, setOrders] = useState([]);
-  // const [billTo, setBillTo] = useState('');
-  // const [shipTo, setShipTo] = useState('');
-  // const [customerPo, setCustomerPo] = useState('');
-  const [orderStatus, setOrderStatus] = useState('');
-  const [newOrder, setNewOrder] = useState([]);
   const [orderEdit, setOrderEdit] = useState({
     item: {}
   });
 
   const navigate = useNavigate();
 
-  // // search order from db
-  // const searchOrder = async (item) => {
-  //   const response = await fetch('/orders?_sort=id');
-  //   const data = await response.json();
-
-  //   if (item === '') {
-  //     setOrders(data);
-  //   } else {
-  //     const filteredData = data.filter((order) => {
-  //       return order.id === parseInt(item);
-  //     });
-
-  //     setOrders(filteredData);
-  //     // updateBillTo(filteredData);
-  //     // updateShipTo(filteredData);
-  //     // updateCustomerPo(filteredData);
-  //     // updateOrderStatus(filteredData);
-  //   }
-  // };
-
   // get doc from order collection in firebase
-  async function getOrders() {
+  const getOrders = async () => {
     const orderSnapshot = await getDocs(collection(db, "orders"));
     const orderParse = []
 
+    
     orderSnapshot.forEach((order) => {
       const orderData = order.data()
+      
+      console.log(orderData)
 
       // Add order id to document object
       orderData.id = order.id
       orderParse.push(orderData)
     });
-
+  
     setOrderList(orderParse)
   }
 
-
-  // // Add order to db
-  // const addOrder = async (newOrder) => {
-  //   const response = await fetch('/orders', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newOrder),
-  //   });
-
-  //   const data = await response.json();
-
-  //   data['order_status'] = 'Booked';
-
-  //   setNewOrder([data, ...orders]);
-  // };
+  // delete doc from order collection in firestore
+  const deleteOrder = async (item) => {
+    // document reference to be used in deleteDoc
+    const deleteDocRef = doc(collection(db, "orders"), item.id)
+  
+    // delete order based on document reference with id
+    await deleteDoc(deleteDocRef)
+  
+    navigate("/orders")
+  }
 
   // Edit order and redirect to edit page
   const editOrder = (item) => {
@@ -82,59 +52,13 @@ export const OrderProvider = ({ children }) => {
     navigate('/edit')
   };
 
-  // // search bill-to for order
-  // const updateBillTo = (item) => {
-  //   if (item.toString().length === 0) {
-  //     setBillTo('');
-  //   } else {
-  //     setBillTo(item[0]['bill-to']);
-  //   }
-  // };
-
-  // // search ship-to for order
-  // const updateShipTo = (item) => {
-  //   if (item.toString().length === 0) {
-  //     setShipTo('');
-  //   } else {
-  //     setShipTo(item[0]['ship-to']);
-  //   }
-  // };
-
-  // // search customer po for order
-  // const updateCustomerPo = (item) => {
-  //   if (item.length === 0) {
-  //     setCustomerPo('');
-  //   } else {
-  //     setCustomerPo(item[0]['customer_po']);
-  //   }
-  // };
-
-  // // search order status for order
-  // const updateOrderStatus = (item) => {
-  //   if (item.toString().length === 0) {
-  //     setOrderStatus('');
-  //   } else {
-  //     setOrderStatus(item[0]['order_status']);
-  //   }
-  // };
-
   return (
     <OrderContext.Provider
       value={{
-        // orders,
-        // billTo,
-        // shipTo,
-        // customerPo,
-        // orderStatus,
-        // updateBillTo,
-        // updateShipTo,
-        // updateCustomerPo,
-        // updateOrderStatus,
-        // searchOrder,
-        // addOrder,
         editOrder,
         orderEdit,
         getOrders,
+        deleteOrder,
         orderList,
       }}
     >

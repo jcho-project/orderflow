@@ -1,16 +1,10 @@
-import { collection, deleteDoc, doc } from "firebase/firestore"
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { FaEdit, FaRegTimesCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 
-import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
-  const { editOrder } = useContext(OrderContext);
-  const [idToBeDeleted, setIdToBeDeleted] = useState('')
-
-  const navigate = useNavigate();
+  const { editOrder, deleteOrder } = useContext(OrderContext);
 
   const columns = [
     { accessor: 'id', label: 'id' },
@@ -22,16 +16,6 @@ function OrderItem({ items }) {
     { accessor: 'customer_po', label: 'Customer PO' },
     { accessor: 'line_status', label: 'Line Status' },
   ];
-
-  async function deleteOrderSubmit(item) {
-    setIdToBeDeleted(item.id)
-    const deleteDocRef = doc(collection(db, "orders"), item.id)
-
-    await deleteDoc(deleteDocRef)
-
-    setIdToBeDeleted("")
-    navigate("/orders")
-  }
 
   return items.map((item) => {
     return (
@@ -50,7 +34,7 @@ function OrderItem({ items }) {
         </td>
         <td className="px-6 py-2 text-center">
           <button>
-            <FaRegTimesCircle onClick={() => deleteOrderSubmit(item)} />
+            <FaRegTimesCircle onClick={() => deleteOrder(item)} />
           </button>
         </td>
       </tr>

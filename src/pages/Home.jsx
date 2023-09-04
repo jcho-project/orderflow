@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import OrderList from '../components/orders/OrderList';
 import { auth } from "../config/firebase"
 import SignIn from './SignIn';
 
