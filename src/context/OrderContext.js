@@ -23,8 +23,6 @@ export const OrderProvider = ({ children }) => {
     orderSnapshot.forEach((order) => {
       const orderData = order.data()
       
-      console.log(orderData)
-
       // Add order id to document object
       orderData.id = order.id
       orderParse.push(orderData)
@@ -37,10 +35,12 @@ export const OrderProvider = ({ children }) => {
   const deleteOrder = async (item) => {
     // document reference to be used in deleteDoc
     const deleteDocRef = doc(collection(db, "orders"), item.id)
-  
+    
     // delete order based on document reference with id
     await deleteDoc(deleteDocRef)
-  
+    
+    await getOrders()
+    
     navigate("/orders")
   }
 
