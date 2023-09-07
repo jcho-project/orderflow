@@ -73,14 +73,14 @@ function CreateForm() {
 
         <h4>Qty</h4>
         <input
-          type="text"
+          type="number"
           value={values['quantity']}
           name="quantity"
           onChange={handleInputChange}
         />
 
         <h4>Price</h4>
-        <input type="text" value={values['price']} name="price" onChange={handleInputChange} />
+        <input type="number" value={values['price']} name="price" onChange={handleInputChange} />
 
         <h4>Customer PO</h4>
         <input
@@ -91,7 +91,7 @@ function CreateForm() {
         />
 
         <button type="submit">Submit</button>
-        <button type="button" onClick={() => navigate('/')}>
+        <button type="button" onClick={() => navigate('/orders')}>
           Close
         </button>
       </form>
