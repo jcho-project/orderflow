@@ -3,11 +3,8 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { db } from "../../config/firebase"
-import OrderContext from '../../context/OrderContext';
 
 function CreateForm() {
-  const { addOrder } = useContext(OrderContext);
-
   const navigate = useNavigate();
 
   const initialValues = {
@@ -49,11 +46,11 @@ function CreateForm() {
   };
 
   return (
-    <>
-      <h2 className="title">Sales Order Entry</h2>
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+      <h2 className="uppercase tracking-wide text-grey-darker text-xl font-bold mb-2">Sales Order Entry</h2>
       <form onSubmit={handleSubmit}>
         <h4>Bill To</h4>
-        <select name="bill-to" value={values['bill-to']} onChange={handleInputChange}>
+        <select className="appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" name="bill-to" value={values['bill-to']} onChange={handleInputChange}>
           <option value=""></option>
           <option value="MSH">MSH</option>
           <option value="Saturn">Saturn</option>
@@ -95,7 +92,7 @@ function CreateForm() {
           Close
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
