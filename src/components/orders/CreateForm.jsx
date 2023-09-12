@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { db } from "../../config/firebase"
+import PrimaryButton from "../shared/PrimaryButton";
 
 function CreateForm() {
   const navigate = useNavigate();
@@ -90,14 +91,9 @@ function CreateForm() {
             onChange={handleInputChange}
           />
 
-          <button className="w-1/2 btn-primary" type="submit">Submit</button>
-          <button className="w-1/2 btn-secondary" type="button" onClick={() => navigate('/orders')}>
-            Close
-          </button>
+          <PrimaryButton customClass="w-1/4" type={"submit"}>Submit</PrimaryButton>
+          <PrimaryButton customClass="w-1/4" type={"button"} onClick={() => navigate('/orders')}>Close</PrimaryButton>
         </form>
-        <div className="flex flex-col">
-          <h2>Test</h2>
-        </div>
       </div>
     </>
   );
