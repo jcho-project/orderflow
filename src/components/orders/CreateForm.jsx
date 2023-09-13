@@ -48,7 +48,7 @@ function CreateForm() {
 
   return (
     <>
-      <div className="w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+      <div className="w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-2">
         <h2 className="uppercase text-grey-darker text-xl font-bold mb-2">Sales Order Entry</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
           <h4 className="uppercase font-bold">Bill To</h4>
@@ -90,9 +90,10 @@ function CreateForm() {
             name="customer_po"
             onChange={handleInputChange}
           />
-
-          <PrimaryButton customClass="w-1/4" type={"submit"}>Submit</PrimaryButton>
-          <PrimaryButton customClass="w-1/4" type={"button"} onClick={() => navigate('/orders')}>Close</PrimaryButton>
+          <div className="flex flex-col">
+            <PrimaryButton customClass="w-1/4" type={"submit"}>Submit</PrimaryButton>
+            <PrimaryButton customClass="w-1/4" type={"button"} onClick={() => navigate('/orders')}>Close</PrimaryButton>
+          </div>
         </form>
       </div>
     </>
