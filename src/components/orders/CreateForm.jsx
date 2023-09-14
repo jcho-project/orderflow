@@ -1,9 +1,10 @@
 import { collection, doc, setDoc } from "firebase/firestore"
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { db } from "../../config/firebase"
 import PrimaryButton from "../shared/PrimaryButton";
+import SecondaryButton from "../shared/SecondaryButton";
 
 function CreateForm() {
   const navigate = useNavigate();
@@ -90,9 +91,9 @@ function CreateForm() {
             name="customer_po"
             onChange={handleInputChange}
           />
-          <div className="flex flex-col">
+          <div className="flex">
             <PrimaryButton customClass="w-1/4" type={"submit"}>Submit</PrimaryButton>
-            <PrimaryButton customClass="w-1/4" type={"button"} onClick={() => navigate('/orders')}>Close</PrimaryButton>
+            <SecondaryButton customClass="w-1/4" type={"button"}>Close</SecondaryButton>
           </div>
         </form>
       </div>
