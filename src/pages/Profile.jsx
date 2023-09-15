@@ -3,6 +3,8 @@ import { doc, updateDoc } from "firebase/firestore"
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+import PrimaryButton from "../components/shared/PrimaryButton";
+import SecondaryButton from "../components/shared/SecondaryButton";
 import { auth } from "../config/firebase"
 import { db } from "../config/firebase"
 
@@ -88,7 +90,9 @@ function Profile() {
               onChange={onChange}
             />
           </form>
-          <button onClick={onLogout}>Log Out</button>
+          <div onClick={onLogout}>
+            <PrimaryButton type={"button"}>Log Out</PrimaryButton>
+          </div>
       </section>
     </section>
   )
