@@ -19,9 +19,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/orders" element={<Orders />} />
+        <Route exact path="/orders" element={<PrivateRoute />}>
+          <Route exact path="/orders" element={<Orders />} />
+        </Route>
         <Route exact path="/create" element={<CreateForm />} />
-        <Route exact path="/edit" element={<EditForm />} />
+        <Route exact path="/edit" element={<PrivateRoute />}>
+          <Route exact path="/edit" element={<EditForm />} />
+        </Route>
         <Route exact path="/about" element={<About />} />
         <Route exact path="/signin" element={<SignIn />} />
         <Route exact path="/signup" element={<SignUp />} />
