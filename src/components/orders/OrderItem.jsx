@@ -20,23 +20,19 @@ function OrderItem({ items }) {
   return items.map((item) => {
     return (
       <tr className="hover:bg-gray-100 dark:hover:bg-gray-700" key={item.id}>
+        <td className="w-4 p-4">
+          <div className="flex items-center">
+            <input id="checkbox-{{ .id }}" aria-describedby="checkbox-1" type="checkbox" className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
+            <label htmlFor="checkbox-{{ .id }}" className="sr-only">checkbox</label>
+          </div>
+        </td>
         {columns.map((column) => {
           return (
-            <td className="px-6 py-2" key={column.accessor}>
+            <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white" key={column.accessor}>
               {item[column.accessor]}
             </td>
           );
         })}
-        {/* <td className="px-6 py-2 text-center">
-          <button>
-            <FaEdit onClick={() => editOrder(item)} />
-          </button>
-        </td>
-        <td className="px-6 py-2 text-center">
-          <button>
-            <FaRegTimesCircle onClick={() => deleteOrder(item)} />
-          </button>
-        </td> */}
         <td className="p-4 space-x-2 whitespace-nowrap">
           <button type="button" data-modal-toggle="edit-user-modal" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
             <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd"></path></svg>
