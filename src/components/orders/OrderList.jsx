@@ -127,10 +127,7 @@ function OrderList() {
                       );
                     })}
                     <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                      EDIT
-                    </th>
-                    <th scope="col" className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                      DELETE
+                      CHANGEs
                     </th>
                   </tr>
                 </thead>
