@@ -1,4 +1,4 @@
-import { FaBell, FaCog, FaDoorOpen,FaPlus, FaQuestion, FaUserCircle } from 'react-icons/fa';
+import { FaBell, FaCog, FaDoorOpen, FaQuestion, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,15 +23,9 @@ function Navbar() {
             <img src="https://flowbite.s3.amazonaws.com/logo.svg" className="mr-3 h-8" alt="FlowBite Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">OrderFlow</span>
           </Link>
-          <OrderInput />
         </div>
         <div className="flex justify-between items-center">
           <ul className='flex'>
-            <li className='px-3 text-white'>
-              <Link to="/create">
-                <FaPlus size={20} />
-              </Link>
-            </li>
             <li className='px-3 text-white'>
               <Link to="/">
                 <FaBell size={20} />
