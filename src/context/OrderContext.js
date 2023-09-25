@@ -14,7 +14,7 @@ export const OrderProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  // get doc from order collection in firebase
+  // get all docs from order collection in firebase
   const getOrders = async () => {
     const orderSnapshot = await getDocs(collection(db, "orders"));
     const orderParse = []
