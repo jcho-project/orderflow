@@ -5,7 +5,23 @@ import OrderContext from '../../context/OrderContext';
 function OrderInput() {
   const [searchValue, setSearchValue] = useState("");
 
-  const { searchOrder } = useContext(OrderContext);
+  const { getOrders, orderList, setOrderList } = useContext(OrderContext);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchValue === "") {
+      getOrders()
+    } else {
+      console.log("handleSearchSubmit Hit!")
+      console.log("orderList", orderList)
+      console.log("searchValue", searchValue)
+  
+      const filteredOrders = orderList.filter((order) => order["bill-to"] === searchValue)
+  
+      console.log("filteredOrders", filteredOrders)
+      setOrderList(filteredOrders)
+    }
+  };
 
   const handleSearchChange = (e) => {
     e.preventDefault();
@@ -17,14 +33,12 @@ function OrderInput() {
     
     setSearchValue(searchInput)
 
-    console.log("searchValue", searchValue)
     // searchOrder(searchValue);
-    setSearchValue("");
   };
 
   return (
     <>
-      <form action="#" method="GET" className="hidden lg:block lg:pl-2">
+      <form onSubmit={handleSearchSubmit} className="hidden lg:block lg:pl-2">
         <label className="sr-only">Search</label>
         <div className="relative flex mt-1 lg:w-96">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

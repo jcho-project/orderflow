@@ -60,6 +60,7 @@ export const OrderProvider = ({ children }) => {
         getOrders,
         deleteOrder,
         orderList,
+        setOrderList,
       }}
     >
       {children}
