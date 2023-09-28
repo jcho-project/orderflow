@@ -11,14 +11,9 @@ function OrderInput() {
     e.preventDefault();
     if (searchValue === "") {
       getOrders()
-    } else {
-      console.log("handleSearchSubmit Hit!")
-      console.log("orderList", orderList)
-      console.log("searchValue", searchValue)
+    } else {  
+      const filteredOrders = orderList.filter((order) => order["bill-to"].toUpperCase() === searchValue.toUpperCase())
   
-      const filteredOrders = orderList.filter((order) => order["bill-to"] === searchValue)
-  
-      console.log("filteredOrders", filteredOrders)
       setOrderList(filteredOrders)
     }
   };
@@ -26,14 +21,13 @@ function OrderInput() {
   const handleSearchChange = (e) => {
     e.preventDefault();
 
-    
     const searchInput = e.target.value
 
-    console.log("searchInput", searchInput)
-    
-    setSearchValue(searchInput)
-
-    // searchOrder(searchValue);
+    if (searchInput === "") {
+      getOrders()
+    } else {
+      setSearchValue(searchInput)
+    }
   };
 
   return (
