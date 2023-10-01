@@ -3,6 +3,7 @@ import { doc, updateDoc } from "firebase/firestore"
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+import profileImg from "../assets/bonnie-green-2x.png"
 import PrimaryButton from "../components/shared/PrimaryButton";
 import SecondaryButton from "../components/shared/SecondaryButton";
 import { auth } from "../config/firebase"
@@ -40,8 +41,8 @@ function Profile() {
       }
     } catch (error) {
       console.log(error)
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
     }
   }
 
@@ -54,7 +55,7 @@ function Profile() {
 
   return (
     <>
-      <section className="flex font-medium items-center justify-center h-screen">
+      {/* <section className="flex font-medium items-center justify-center h-screen">
         <section className="w-64 mx-auto bg-[#20354b] rounded-2xl px-8 py-6 shadow-lg">
             <div className="flex items-center justify-between">
                 <span className="text-gray-400 text-sm">2d ago</span>
@@ -71,7 +72,7 @@ function Profile() {
             <p onClick={() => {
               changeDetails && onSubmit()
               setChangeDetails((prevState) => !prevState)
-            }}>{changeDetails ? "done" : "change"}</p>
+            }}>{changeDetails ? "DONE" : "EDIT"}</p>
 
             <form>
               <input
@@ -95,7 +96,7 @@ function Profile() {
               <PrimaryButton type={"button"}>Log Out</PrimaryButton>
             </div>
         </section>
-      </section>
+      </section> */}
 
       {/* Breadcrumbs & Title */}
       <div className="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
@@ -116,16 +117,16 @@ function Profile() {
               </li>
             </ol>
           </nav>
-          <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">User settings</h1>
+          <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">User Settings</h1>
         </div>
       </div>
 
       <div className="col-span-full xl:col-auto">
         <div className="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
           <div className="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
-              <img className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0" src="/images/users/bonnie-green-2x.png" alt="Jese picture" />
+              <img className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0" src={profileImg} alt="Jese picture" />
                 <div>
-                <h3 className="mb-1 text-xl font-bold text-gray-900 dark:text-white">Profile picture</h3>
+                <h3 className="mb-1 text-xl font-bold text-gray-900 dark:text-white">{displayName}</h3>
                 <div className="mb-4 text-sm text-gray-500 dark:text-gray-400">
                     JPG, GIF or PNG. Max size of 800K
                 </div>
