@@ -11,14 +11,19 @@ function OrderItem({ items }) {
 
   const handleOnChange = (index) => {
     // setIsChecked(!isChecked)
-
+    
+    console.log("isChecked BEFORE", isChecked)
+    
     const updatedCheckedState = isChecked.map((state, position) => {
       position === index ? !state : state
     })
 
+    console.log("updatedCheckedState", updatedCheckedState)
+      
     setIsChecked(updatedCheckedState)
 
-    console.log("isChecked", isChecked)
+    console.log("isChecked AFTER", isChecked)
+
     console.log(index)
   }
 
@@ -38,7 +43,7 @@ function OrderItem({ items }) {
       <tr className="hover:bg-gray-100 dark:hover:bg-gray-700" key={item.id}>
         <td className="w-4 p-4">
           <div className="flex items-center">
-            <input name="checkbox" onChange={handleOnChange(items.indexOf(item))} checked={isChecked[items.indexOf(item)]} aria-describedby="checkbox-1" type="checkbox" className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
+            <input name="checkbox" onChange={() => handleOnChange(items.indexOf(item))} checked={isChecked[items.indexOf(item)]} aria-describedby="checkbox-1" type="checkbox" className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
           </div>
         </td>
         {columns.map((column) => {
