@@ -7,7 +7,9 @@ function OrderItem({ items }) {
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  const [isChecked, setIsChecked] = useState(itemsInitialState)
+  const test = [false, false, false, false]
+
+  const [isChecked, setIsChecked] = useState(test)
 
   const handleOnChange = (index) => {
     // setIsChecked(!isChecked)
@@ -17,14 +19,10 @@ function OrderItem({ items }) {
     const updatedCheckedState = isChecked.map((state, position) => {
       position === index ? !state : state
     })
-
-    console.log("updatedCheckedState", updatedCheckedState)
       
     setIsChecked(updatedCheckedState)
 
     console.log("isChecked AFTER", isChecked)
-
-    console.log(index)
   }
 
   const columns = [
