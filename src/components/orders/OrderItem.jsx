@@ -7,7 +7,9 @@ function OrderItem({ items }) {
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  const test = [false, false, false, false]
+  const [test, setTest] = useState([false, false, false, false])
+
+  // const test = [false, false, false, false]
 
   const [isChecked, setIsChecked] = useState(test)
 
@@ -23,7 +25,8 @@ function OrderItem({ items }) {
 
     test[index] = !test[index]
       
-    setIsChecked(test)
+    // setIsChecked(test)
+    setTest(test)
 
     console.log("isChecked AFTER", test)
   }
