@@ -1,24 +1,28 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
-  const { editOrder, deleteOrder } = useContext(OrderContext);
+  const { editOrder, deleteOrder } = useContext(OrderContext)
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  const [test, setTest] = useState([false, false, false, false])
+  // const [test, setTest] = useState([false, false, false, false])
 
-  const [isChecked, setIsChecked] = useState([itemsInitialState])
+  const [isChecked, setIsChecked] = useState()
+
+  useEffect(() => {
+    setIsChecked(itemsInitialState)
+  }, [items])
 
   const handleOnChange = (index) => {    
-    console.log("test BEFORE", test)
-    console.log("isChecked", isChecked)
-    console.log("Comparison", isChecked === test)
+    console.log("isChecked BEFORE", isChecked)
 
     const updatedCheckedState = isChecked.map((state, position) => {
       console.log("position", position)
       console.log("index", index)
+
+      // position === index ? !state : state
 
       if (position === index) {
         return !state
@@ -27,9 +31,8 @@ function OrderItem({ items }) {
       }
     })
 
-    
     setIsChecked(updatedCheckedState)
-    console.log("test AFTER", isChecked)
+    console.log("isChecked AFTER", isChecked)
   }
 
   const columns = [
