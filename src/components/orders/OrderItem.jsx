@@ -7,8 +7,6 @@ function OrderItem({ items }) {
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  // const [test, setTest] = useState([false, false, false, false])
-
   const [isChecked, setIsChecked] = useState()
 
   useEffect(() => {
@@ -16,13 +14,11 @@ function OrderItem({ items }) {
   }, [items])
 
   const handleOnChange = (index) => {    
-    console.log("isChecked BEFORE", isChecked)
+    // console.log("isChecked BEFORE", isChecked)
 
     const updatedCheckedState = isChecked.map((state, position) => {
-      console.log("position", position)
-      console.log("index", index)
-
-      // position === index ? !state : state
+      // console.log("position", position)
+      // console.log("index", index)
 
       if (position === index) {
         return !state
@@ -32,7 +28,7 @@ function OrderItem({ items }) {
     })
 
     setIsChecked(updatedCheckedState)
-    console.log("isChecked AFTER", isChecked)
+    // console.log("isChecked AFTER", isChecked)
   }
 
   const columns = [
