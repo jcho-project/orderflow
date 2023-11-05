@@ -27,6 +27,7 @@ function OrderList() {
 
   const test = () => {
     console.log("hadleTest hit@")
+    console.log(orderList)
   }
 
   return (

@@ -3,33 +3,33 @@ import { useContext, useEffect, useState } from 'react';
 import OrderContext from '../../context/OrderContext';
 
 function OrderItem({ items }) {
-  const { editOrder, deleteOrder } = useContext(OrderContext)
+  const { editOrder, deleteOrder, isChecked, setIsChecked, handleCheckboxChange } = useContext(OrderContext)
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  const [isChecked, setIsChecked] = useState()
+  // const [isChecked, setIsChecked] = useState()
 
   useEffect(() => {
     setIsChecked(itemsInitialState)
   }, [items])
 
-  const handleOnChange = (index) => {    
-    // console.log("isChecked BEFORE", isChecked)
+  // const handleCheckboxChange = (index) => {    
+  //   // console.log("isChecked BEFORE", isChecked)
 
-    const updatedCheckedState = isChecked.map((state, position) => {
-      // console.log("position", position)
-      // console.log("index", index)
+  //   const updatedCheckedState = isChecked.map((state, position) => {
+  //     // console.log("position", position)
+  //     // console.log("index", index)
 
-      if (position === index) {
-        return !state
-      } else {
-        return state
-      }
-    })
+  //     if (position === index) {
+  //       return !state
+  //     } else {
+  //       return state
+  //     }
+  //   })
 
-    setIsChecked(updatedCheckedState)
-    // console.log("isChecked AFTER", isChecked)
-  }
+  //   setIsChecked(updatedCheckedState)
+  //   // console.log("isChecked AFTER", isChecked)
+  // }
 
   const columns = [
     { accessor: 'id', label: 'id' },
@@ -47,7 +47,7 @@ function OrderItem({ items }) {
       <tr className="hover:bg-gray-100 dark:hover:bg-gray-700" key={item.id}>
         <td className="w-4 p-4">
           <div className="flex items-center">
-            <input name="checkbox" onChange={() => handleOnChange(items.indexOf(item))} checked={isChecked[items.indexOf(item)]} type="checkbox" className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
+            <input name="checkbox" onChange={() => handleCheckboxChange(items.indexOf(item))} checked={isChecked[items.indexOf(item)]} type="checkbox" className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
           </div>
         </td>
         {columns.map((column) => {

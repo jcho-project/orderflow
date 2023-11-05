@@ -52,6 +52,26 @@ export const OrderProvider = ({ children }) => {
     navigate('/edit')
   };
 
+  const [isChecked, setIsChecked] = useState()
+
+  const handleCheckboxChange = (index) => {    
+    // console.log("isChecked BEFORE", isChecked)
+
+    const updatedCheckedState = isChecked.map((state, position) => {
+      // console.log("position", position)
+      // console.log("index", index)
+
+      if (position === index) {
+        return !state
+      } else {
+        return state
+      }
+    })
+
+    setIsChecked(updatedCheckedState)
+    // console.log("isChecked AFTER", isChecked)
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -61,6 +81,9 @@ export const OrderProvider = ({ children }) => {
         deleteOrder,
         orderList,
         setOrderList,
+        handleCheckboxChange,
+        isChecked,
+        setIsChecked,
       }}
     >
       {children}
