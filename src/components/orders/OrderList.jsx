@@ -6,7 +6,7 @@ import OrderInput from '../orders/OrderInput';
 import OrderItem from './OrderItem';
 
 function OrderList() {
-  const { orderList, getOrders } = useContext(OrderContext)
+  const { orderList, getOrders, isChecked } = useContext(OrderContext)
 
   const navigate = useNavigate();
   
@@ -28,6 +28,8 @@ function OrderList() {
   const test = () => {
     console.log("hadleTest hit@")
     console.log(orderList)
+    console.log(isChecked)
+
   }
 
   return (
