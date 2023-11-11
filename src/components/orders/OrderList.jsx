@@ -30,6 +30,15 @@ function OrderList() {
     console.log(orderList)
     console.log(isChecked)
 
+    const IdsToBePicked = []
+
+    for (let i = 0; i < isChecked.length; i++) {
+      if (isChecked[i] === true) {
+        IdsToBePicked.push(orderList[i].id)
+      }
+    }
+
+    console.log("IdsToBePicked", IdsToBePicked)
   }
 
   return (
