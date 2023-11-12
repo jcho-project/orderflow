@@ -52,6 +52,7 @@ export const OrderProvider = ({ children }) => {
     navigate('/edit')
   };
 
+  // Checkbox state and handling change
   const [isChecked, setIsChecked] = useState()
 
   const handleCheckboxChange = (index) => {    

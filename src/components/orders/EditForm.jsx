@@ -25,13 +25,13 @@ function EditForm() {
   const navigate = useNavigate()
 
   async function updateOrderFirestore(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
 
     updateDoc(orderToBeUpdated, values)
 
-    navigate('/orders');
+    navigate('/orders')
   }
 
   const handleInputChange = (e) => {
@@ -39,12 +39,12 @@ function EditForm() {
     // const name = e.target.name
     // const value = e.target.value
 
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
     setValues({
       ...values,
       [name]: value,
-    });
+    })
   };
 
   return (

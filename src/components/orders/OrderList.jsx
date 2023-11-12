@@ -1,6 +1,8 @@
+import { doc, updateDoc } from "firebase/firestore"
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 import OrderInput from '../orders/OrderInput';
 import OrderItem from './OrderItem';
@@ -26,7 +28,6 @@ function OrderList() {
   ];
 
   const test = () => {
-    console.log("hadleTest hit@")
     console.log(orderList)
     console.log(isChecked)
 
@@ -39,6 +40,13 @@ function OrderList() {
     }
 
     console.log("IdsToBePicked", IdsToBePicked)
+
+    IdsToBePicked.forEach((id) => {
+      const orderToBeUpdated = doc(db, "orders", id)
+
+      updateDoc(orderToBeUpdated, {line_status: "Picked"})
+    })
+
   }
 
   return (
