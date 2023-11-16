@@ -8,6 +8,7 @@ import { OrderProvider } from './context/OrderContext';
 import About from './pages/About';
 import ForgotPassword from './pages/ForgotPassword';
 import Home from './pages/Home';
+import Inventory from './pages/Inventory';
 import Orders from './pages/Orders';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/profile" element={<Profile />} />
         </Route>
         <Route exact path="/forgotpassword" element={<ForgotPassword />} />
+        <Route exact path="/inventory" element={<Inventory />} />
       </Routes>
     </OrderProvider>
   );
