@@ -13,10 +13,6 @@ function Home() {
     setUser(auth.currentUser)
   })
 
-  const handleOrderRedirect = () => {
-    navigate("/orders")
-  }
-
   return (
     <>
       <div className="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
@@ -35,7 +31,8 @@ function Home() {
           </div>
         </div>
       </div>
-      <button onClick={handleOrderRedirect}>Orders</button>
+      <button onClick={() => navigate("/orders")}>Orders</button>
+      <button onClick={() => navigate("/inventory")}>Inventory</button>
     </>
   );
 }
