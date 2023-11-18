@@ -2,13 +2,13 @@ function Inventory() {
 
   const columns = [
     { accessor: 'id', label: 'id' },
-    { accessor: 'bill-to', label: 'Bill-To' },
-    { accessor: 'ship-to', label: 'Ship-To' },
+    { accessor: 'vpn', label: 'VPN' },
     { accessor: 'model', label: 'Model' },
+    { accessor: 'location', label: 'Location' },
     { accessor: 'quantity', label: 'Quantity' },
     { accessor: 'price', label: 'Price' },
-    { accessor: 'customer_po', label: 'Customer PO' },
-    { accessor: 'line_status', label: 'Line Status' },
+    { accessor: 'status', label: 'Status' },
+    { accessor: 'vendor', label: 'Vendor' },
   ];
 
   return(
@@ -33,7 +33,7 @@ function Inventory() {
                 </li>
               </ol>
             </nav>
-            <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">SALES ORDER INQUIRY</h1>
+            <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">INVENTORY MANAGEMENT</h1>
           </div>
 
           {/* Searchbar / Icons / Add Order */}
