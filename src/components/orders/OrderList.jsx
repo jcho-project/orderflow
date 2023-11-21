@@ -1,5 +1,5 @@
 import { doc, updateDoc } from "firebase/firestore"
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { db } from "../../config/firebase"
@@ -16,7 +16,7 @@ function OrderList() {
     getOrders()
   }, [])
 
-  const [pickSubmitted, setPickSubmitted] = useState(false)
+  // const [pickSubmitted, setPickSubmitted] = useState(false)
 
   const columns = [
     { accessor: 'id', label: 'id' },

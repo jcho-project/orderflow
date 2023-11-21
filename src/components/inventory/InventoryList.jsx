@@ -1,4 +1,10 @@
+import { useContext, useEffect } from 'react'
+
+import OrderContext from '../../context/OrderContext'
+import InventoryItem from "./InventoryItem";
+
 function InventoryList() {
+  const { orderList, getOrders, isChecked } = useContext(OrderContext)
 
   const columns = [
     { accessor: 'id', label: 'id' },
@@ -87,6 +93,7 @@ function InventoryList() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                  <InventoryItem items={orderList} />
                 </tbody>
               </table>
             </div>
