@@ -8,6 +8,7 @@ const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
   const [orderList, setOrderList] = useState([])
+  const [inventoryList, setInventoryList] = useState([])
   const [orderEdit, setOrderEdit] = useState({
     item: {}
   });
@@ -29,6 +30,23 @@ export const OrderProvider = ({ children }) => {
     });
   
     setOrderList(orderParse)
+  }
+
+  // get all docs from inventory collection in firebase
+  const getInventory = async () => {
+    const inventorySnapshot = await getDocs(collection(db, "inventory"));
+    const inventoryParse = []
+
+    
+    inventorySnapshot.forEach((item) => {
+      const inventoryData = item.data()
+      
+      // Add order id to document object
+      inventoryData.id = item.id
+      inventoryParse.push(inventoryData)
+    });
+  
+    setInventoryList(inventoryParse)
   }
 
   // delete doc from order collection in firestore
@@ -79,8 +97,10 @@ export const OrderProvider = ({ children }) => {
         editOrder,
         orderEdit,
         getOrders,
+        getInventory,
         deleteOrder,
         orderList,
+        inventoryList,
         setOrderList,
         handleCheckboxChange,
         isChecked,

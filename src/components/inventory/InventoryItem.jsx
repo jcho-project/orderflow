@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
 
 import OrderContext from '../../context/OrderContext';
+import InventoryList from './InventoryList';
 
 function InventoryItem({ items }) {
   const { editOrder, deleteOrder, isChecked, setIsChecked, handleCheckboxChange } = useContext(OrderContext)
 
-  const itemsInitialState = new Array(items.length).fill(false)
+//   const itemsInitialState = new Array(items.length).fill(false)
 
   // const [isChecked, setIsChecked] = useState()
 
   useEffect(() => {
-    setIsChecked(itemsInitialState)
+    // setIsChecked(itemsInitialState)
+    console.log(items)
   }, [items])
 
   const columns = [

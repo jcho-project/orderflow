@@ -4,7 +4,12 @@ import OrderContext from '../../context/OrderContext'
 import InventoryItem from "./InventoryItem";
 
 function InventoryList() {
-  const { orderList, getOrders, isChecked } = useContext(OrderContext)
+  const { orderList, InventoryList, getOrders, getInventory, isChecked } = useContext(OrderContext)
+
+  useEffect(() => {
+    getInventory()
+    console.log(InventoryList)
+  }, [])
 
   const columns = [
     { accessor: 'id', label: 'id' },
