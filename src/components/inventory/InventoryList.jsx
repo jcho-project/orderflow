@@ -4,7 +4,7 @@ import OrderContext from '../../context/OrderContext'
 import InventoryItem from "./InventoryItem";
 
 function InventoryList() {
-  const { orderList, InventoryList, getOrders, getInventory, isChecked } = useContext(OrderContext)
+  const { orderList, inventoryList, getOrders, getInventory, isChecked } = useContext(OrderContext)
 
   useEffect(() => {
     getInventory()
@@ -98,7 +98,7 @@ function InventoryList() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                  <InventoryItem items={orderList} />
+                  <InventoryItem items={inventoryList} />
                 </tbody>
               </table>
             </div>

@@ -6,13 +6,12 @@ import InventoryList from './InventoryList';
 function InventoryItem({ items }) {
   const { editOrder, deleteOrder, isChecked, setIsChecked, handleCheckboxChange } = useContext(OrderContext)
 
-//   const itemsInitialState = new Array(items.length).fill(false)
+  const itemsInitialState = new Array(items.length).fill(false)
 
   // const [isChecked, setIsChecked] = useState()
 
   useEffect(() => {
-    // setIsChecked(itemsInitialState)
-    console.log(items)
+    setIsChecked(itemsInitialState)
   }, [items])
 
   const columns = [
