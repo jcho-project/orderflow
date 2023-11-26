@@ -8,7 +8,7 @@ function InventoryItem({ items }) {
 
   const itemsInitialState = new Array(items.length).fill(false)
 
-  // const [isChecked, setIsChecked] = useState()
+//   const [isChecked, setIsChecked] = useState()
 
   useEffect(() => {
     setIsChecked(itemsInitialState)
