@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
+import CreateInventoryForm from './components/inventory/CreateInventoryForm';
 import Navbar from './components/layout/Navbar';
-import CreateForm from './components/orders/CreateForm';
+import CreateOrderForm from './components/orders/CreateOrderForm';
 import EditForm from './components/orders/EditForm';
 import PrivateRoute from './components/PrivateRoute';
 import { OrderProvider } from './context/OrderContext';
@@ -23,7 +24,8 @@ function App() {
         <Route exact path="/orders" element={<PrivateRoute />}>
           <Route exact path="/orders" element={<Orders />} />
         </Route>
-        <Route exact path="/create" element={<CreateForm />} />
+        <Route exact path="/create-order" element={<CreateOrderForm />} />
+        <Route exact path="/create-inventory" element={<CreateInventoryForm />} />
         <Route exact path="/edit" element={<PrivateRoute />}>
           <Route exact path="/edit" element={<EditForm />} />
         </Route>

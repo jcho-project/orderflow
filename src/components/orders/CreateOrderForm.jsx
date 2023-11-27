@@ -6,7 +6,7 @@ import { db } from "../../config/firebase"
 import PrimaryButton from "../shared/PrimaryButton";
 import SecondaryButton from "../shared/SecondaryButton";
 
-function CreateForm() {
+function CreateOrderForm() {
   const navigate = useNavigate();
 
   const initialValues = {
@@ -101,4 +101,4 @@ function CreateForm() {
   );
 }
 
-export default CreateForm;
+export default CreateOrderForm;

@@ -1,7 +1,7 @@
-import CreateForm from '../components/orders/CreateForm';
+import CreateOrderForm from '../components/orders/CreateOrderForm';
 
 function CreateOrder() {
-  return <CreateForm />;
+  return <CreateOrderForm />;
 }
 
 export default CreateOrder;
