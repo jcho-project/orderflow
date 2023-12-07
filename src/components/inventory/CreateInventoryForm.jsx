@@ -24,11 +24,11 @@ function CreateInventoryForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // const newDocRef = doc(collection(db, "orders"))
+    const newDocRef = doc(collection(db, "inventory"))
 
-    // values.id = newDocRef.id
+    values.id = newDocRef.id
     
-    // await setDoc(newDocRef, values)
+    await setDoc(newDocRef, values)
 
     console.log("Values: ", values)
     navigate('/inventory')
@@ -63,17 +63,17 @@ function CreateInventoryForm() {
           <h4 className="uppercase font-bold">Vendor Part Number</h4>
           <select className="w-1/2 appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker rounded my-2" name="vpn" value={values['vpn']} onChange={handleInputChange}>
             <option value=""></option>
-            <option value="LG"></option>
-            <option value="Lenovo">Lenovo</option>
-            <option value="Samsung">Samsung</option>
+            <option value="03K714">03K714</option>
+            <option value="03X933">03X933</option>
+            <option value="09H457">09H457</option>
           </select>
 
           <h4 className="uppercase font-bold">Model</h4>
           <select className="w-1/2 appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker rounded my-2" name="model" value={values['model']} onChange={handleInputChange}>
             <option value=""></option>
-            <option value="New York">New York</option>
-            <option value="Boston">Boston</option>
-            <option value="Los Angeles">Los Angeles</option>
+            <option value="MSF-85377">MSF-85377</option>
+            <option value="MSF-99785">MSF-99785</option>
+            <option value="MSF-46851">MSF-46851</option>
           </select>
 
           <h4 className="uppercase font-bold">Location</h4>
@@ -92,13 +92,12 @@ function CreateInventoryForm() {
           <input className="w-1/2 appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker rounded my-2" type="number" value={values['price']} name="price" onChange={handleInputChange} />
 
           <h4 className="uppercase font-bold">Status</h4>
-          <input
-            className="w-1/2 appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker rounded my-2"
-            type="text"
-            value={values['status']}
-            name="status"
-            onChange={handleInputChange}
-          />
+          <select className="w-1/2 appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker rounded my-2" name="status" value={values['status']} onChange={handleInputChange}>
+            <option value=""></option>
+            <option value="Spare">Spare</option>
+            <option value="Picked">Picked</option>
+            <option value="In Delivery">In Delivery</option>
+          </select>
 
           <div className="flex">
             <PrimaryButton customClass="w-1/4" type={"submit"}>Submit</PrimaryButton>
