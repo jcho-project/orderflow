@@ -12,6 +12,9 @@ export const OrderProvider = ({ children }) => {
   const [orderEdit, setOrderEdit] = useState({
     item: {}
   });
+  const [inventoryToBeEdited, setInventoryToBeEdited] = useState({
+    item: {}
+  })
 
   const navigate = useNavigate();
 
@@ -70,6 +73,14 @@ export const OrderProvider = ({ children }) => {
     navigate('/edit')
   };
 
+  // Edit inventory and redirect to edit inventory page
+  const editInventory = (item) => {
+    setInventoryToBeEdited({
+      item: item
+    })
+    navigate('/')
+  }
+
   // Checkbox state and handling change
   const [isChecked, setIsChecked] = useState()
 
@@ -95,6 +106,7 @@ export const OrderProvider = ({ children }) => {
     <OrderContext.Provider
       value={{
         editOrder,
+        editInventory,
         orderEdit,
         getOrders,
         getInventory,
