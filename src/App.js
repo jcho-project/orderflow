@@ -24,8 +24,12 @@ function App() {
         <Route exact path="/orders" element={<PrivateRoute />}>
           <Route exact path="/orders" element={<Orders />} />
         </Route>
-        <Route exact path="/create-order" element={<CreateOrderForm />} />
-        <Route exact path="/create-inventory" element={<CreateInventoryForm />} />
+        <Route exact path="/create-order" element={<PrivateRoute />}>
+          <Route exact path="/create-order" element={<CreateOrderForm />} />
+        </Route>
+        <Route exact path="/create-inventory" element={<PrivateRoute />}>
+          <Route exact path="/create-inventory" element={<CreateInventoryForm />} />
+        </Route>
         <Route exact path="/edit" element={<PrivateRoute />}>
           <Route exact path="/edit" element={<EditForm />} />
         </Route>
