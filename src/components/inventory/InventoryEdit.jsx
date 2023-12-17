@@ -6,18 +6,17 @@ import { db } from "../../config/firebase"
 import OrderContext from '../../context/OrderContext';
 
 function InventoryEdit() {
-  const { orderEdit } = useContext(OrderContext)
+  const { orderEdit, inventoryToBeEdited } = useContext(OrderContext)
   
   const initialValues = {
-    id: orderEdit.item['id'],
-    'bill-to': orderEdit.item['bill-to'],
-    'ship-to': orderEdit.item['ship-to'],
-    model: orderEdit.item['model'],
-    quantity: orderEdit.item['quantity'],
-    price: orderEdit.item['price'],
-    order_status: orderEdit.item['order_status'],
-    line_status: orderEdit.item['line_status'],
-    customer_po: orderEdit.item['customer_po'],
+    id: inventoryToBeEdited.item['id'],
+    vpn: inventoryToBeEdited.item['vpn'],
+    model: inventoryToBeEdited.item['model'],
+    location: inventoryToBeEdited.item['location'],
+    quantity: inventoryToBeEdited.item['quantity'],
+    price: inventoryToBeEdited.item['price'],
+    status: inventoryToBeEdited.item['status'],
+    vendor: inventoryToBeEdited.item['vendor'],
   }
 
   const [values, setValues] = useState(initialValues)
@@ -25,13 +24,13 @@ function InventoryEdit() {
   const navigate = useNavigate()
 
   async function updateOrderFirestore(e) {
-    e.preventDefault()
+    // e.preventDefault()
 
-    const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
+    // const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
 
-    updateDoc(orderToBeUpdated, values)
+    // updateDoc(orderToBeUpdated, values)
 
-    navigate('/orders')
+    // navigate('/orders')
   }
 
   const handleInputChange = (e) => {
@@ -51,10 +50,10 @@ function InventoryEdit() {
     <>
       <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={updateOrderFirestore}>
-        <h4>Bill To</h4>
-        <select name="bill-to" value={values['bill-to']} onChange={handleInputChange}>
+        <h4>VPN</h4>
+        <select name="vpn" value={values['vpn']} onChange={handleInputChange}>
           <option value=""></option>
-          <option value="MSH">MSH</option>
+          <option value="03X933">03X933</option>
           <option value="Saturn">Saturn</option>
           <option value="OTTO">OTTO</option>
         </select>

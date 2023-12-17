@@ -78,7 +78,7 @@ export const OrderProvider = ({ children }) => {
     setInventoryToBeEdited({
       item: item
     })
-    navigate('/')
+    navigate('/edit-inventory')
   }
 
   // Checkbox state and handling change
@@ -107,6 +107,7 @@ export const OrderProvider = ({ children }) => {
       value={{
         editOrder,
         editInventory,
+        inventoryToBeEdited,
         orderEdit,
         getOrders,
         getInventory,
