@@ -24,13 +24,15 @@ function InventoryEdit() {
   const navigate = useNavigate()
 
   async function updateOrderFirestore(e) {
-    // e.preventDefault()
+    e.preventDefault()
 
-    // const orderToBeUpdated = doc(db, "orders", orderEdit.item.id)
+    const orderToBeUpdated = doc(db, "inventory", inventoryToBeEdited.item.id)
 
-    // updateDoc(orderToBeUpdated, values)
+    // console.log(orderToBeUpdated)
 
-    // navigate('/orders')
+    updateDoc(orderToBeUpdated, values)
+
+    navigate('/inventory')
   }
 
   const handleInputChange = (e) => {
@@ -51,20 +53,20 @@ function InventoryEdit() {
       <h2 className="title">Sales Order Entry</h2>
       <form onSubmit={updateOrderFirestore}>
         <h4>VPN</h4>
-        <select name="vpn" value={values['vpn']} onChange={handleInputChange}>
-          <option value=""></option>
-          <option value="03X933">03X933</option>
-          <option value="Saturn">Saturn</option>
-          <option value="OTTO">OTTO</option>
-        </select>
+        <input
+          type="text"
+          value={values["vpn"]}
+          name="vpn"
+          onChange={handleInputChange}
+        />
 
-        <h4>Ship To</h4>
-        <select name="ship-to" value={values['ship-to']} onChange={handleInputChange}>
-          <option value=""></option>
-          <option value="New York">New York</option>
-          <option value="Boston">Boston</option>
-          <option value="Los Angeles">Los Angeles</option>
-        </select>
+        <h4>Location</h4>
+        <input
+          type="text"
+          value={values["location"]}
+          name="location"
+          onChange={handleInputChange}
+        />
 
         <h4>Model</h4>
         <input type="text" value={values['model']} name="model" onChange={handleInputChange} />
@@ -80,11 +82,19 @@ function InventoryEdit() {
         <h4>Price</h4>
         <input type="number" value={values['price']} name="price" onChange={handleInputChange} />
 
-        <h4>Customer PO</h4>
+        <h4>Status</h4>
         <input
           type="text"
-          value={values['customer_po']}
-          name="customer_po"
+          value={values['status']}
+          name="status"
+          onChange={handleInputChange}
+        />
+
+        <h4>Vendor</h4>
+        <input
+          type="text"
+          value={values['vendor']}
+          name="vendor"
           onChange={handleInputChange}
         />
 
